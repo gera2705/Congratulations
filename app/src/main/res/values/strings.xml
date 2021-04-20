@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Congratulations</string>
+    <string name="HelpButtonDescription">Кнопка - Помощь</string>
 </resources>
