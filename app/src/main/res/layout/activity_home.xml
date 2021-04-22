@@ -30,85 +30,20 @@
         app:layout_constraintGuide_begin="32dp"/>
 
 
-    <ScrollView
-
-        android:id="@+id/scrollView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        app:layout_constraintBottom_toTopOf="@+id/navigation"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
-
-        <HorizontalScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-
-                    android:layout_width="135dp"
-                    android:layout_height="145dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="10dp"
-                    android:backgroundTint="@color/white"
-
-                    android:text="1"
-                     />
-
-                <Button
-                    android:layout_width="135dp"
-                    android:layout_height="145dp"
-                    android:layout_marginEnd="10dp"
-                    android:backgroundTint="@color/white"
-                    android:text="2"
-                   />
-
-                <Button
-                    android:layout_width="135dp"
-                    android:layout_height="145dp"
-                    android:layout_marginEnd="10dp"
-                    android:backgroundTint="@color/white"
-                    android:text="3"
-                   />
-
-                <Button
-                    android:layout_width="135dp"
-                    android:layout_height="145dp"
-                    android:backgroundTint="@color/white"
-
-                    android:text="4"
-                    />
-
-            </LinearLayout>
-        </HorizontalScrollView>
-    </ScrollView>
-
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-
         android:background="@drawable/ic_logo"
         app:layout_constraintTop_toTopOf="@+id/guideline_horizontal"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
-
-
-         />
+        />
 
     <ImageButton
         android:id="@+id/question"
         android:layout_width="wrap_content"
-
         android:layout_height="wrap_content"
-
         android:background="@drawable/ic_question"
         app:layout_constraintTop_toTopOf="@+id/guideline_horizontal"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
@@ -166,13 +101,15 @@
 
 
         <Button
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@drawable/found_button_selector"
-            android:text="Найти поздравление"
+            android:text="@string/found_button_text"
             android:textColor="@color/white"
             android:paddingEnd="23dp"
+            android:paddingStart="23dp"
             android:textStyle="normal"
             android:drawableEnd="@drawable/ic_search"
             android:textAllCaps="false"
@@ -180,8 +117,6 @@
 
             app:layout_constraintStart_toEndOf="@+id/guideline_vertical_main_card"
             app:layout_constraintTop_toBottomOf="@+id/name" />
-
-
 
 
 
@@ -198,21 +133,20 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_left_button_bg"
         android:layout_marginTop="16dp"
-
-        android:background="@color/white"
+        android:background="@drawable/left_and_right_button_selector"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
-        app:layout_constraintTop_toBottomOf="@+id/main_card" />
+        app:layout_constraintTop_toBottomOf="@+id/main_card"
+         />
 
 
     <ImageButton
-        android:background="@color/white"
+
         android:id="@+id/right_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_right_button_bg"
-
+        android:background="@drawable/left_and_right_button_selector"
         android:layout_marginTop="16dp"
-
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintTop_toBottomOf="@+id/main_card" />
 
@@ -222,13 +156,70 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="На любой повод"
+        android:text="@string/scroll_view_text"
         android:textColor="@color/white"
         android:textSize="26sp"
-
-
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
         app:layout_constraintTop_toBottomOf="@+id/left_button" />
+
+
+    <ScrollView
+
+        android:id="@+id/scrollView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="135dp"
+                    android:layout_height="145dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="10dp"
+                    android:backgroundTint="@color/white"
+                    android:background="@drawable/left_and_right_button_selector"
+                    />
+
+                <Button
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="135dp"
+                    android:layout_height="145dp"
+                    android:layout_marginEnd="10dp"
+                    android:backgroundTint="@color/white"
+                    android:background="@drawable/left_and_right_button_selector"
+                    />
+
+                <Button
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="135dp"
+                    android:layout_height="145dp"
+                    android:layout_marginEnd="10dp"
+                    android:backgroundTint="@color/white"
+                    android:background="@drawable/left_and_right_button_selector"
+                    />
+
+                <Button
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="135dp"
+                    android:layout_height="145dp"
+                    android:backgroundTint="@color/white"
+                    android:background="@drawable/left_and_right_button_selector"
+                    />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+    </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"
@@ -236,13 +227,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:itemBackground="@color/dark_blue"
-        app:itemIconTint="@drawable/selector"
-        app:itemTextColor="@drawable/selector"
+        app:itemIconTint="@drawable/menu_selector"
+        app:itemTextColor="@drawable/menu_selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_bottom" />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

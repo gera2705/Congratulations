@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">Congratulations</string>
     <string name="HelpButtonDescription">Кнопка - Помощь</string>
+    <string name="found_button_text">Найти поздравление</string>
+    <string name="scroll_view_text">На любой повод</string>
+
+    <string-array name="genders">
+        <item>Не важно</item>
+        <item>Мужской</item>
+        <item>Женский</item>
+
+    </string-array>
 </resources>

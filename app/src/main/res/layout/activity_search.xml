@@ -1,25 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_color"
     tools:context=".SearchActivity">
 
-    <TextView
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="24dp"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical_end"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="24dp"/>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="32dp"/>
+
+
+    <ImageView
+        android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search"/>
+        android:background="@drawable/ic_logo"
+        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
+        />
+
+    <ImageButton
+        android:id="@+id/question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_question"
+        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
+        android:contentDescription="@string/HelpButtonDescription" />
+
+    <TextView
+        android:id="@+id/found_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Поиск"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <TextView
+        android:id="@+id/search_main_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/white"
+
+        android:textSize="14sp"
+        android:text="Находите уникальные поздравления из\nпостоянно обновляющейся базы с лучшими\nпожеланиями"
+        android:gravity="center"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/found_text" />
+
+    <TextView
+        android:id="@+id/text_view_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:paddingStart="15dp"
+        android:text="Название события*"
+        android:textColor="@color/primary_1"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/search_main_text" />
+
+    <TextView
+        android:id="@+id/text_view_2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/custom_text_view"
+        android:hint="Например, Пасха"
+        android:paddingStart="15dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="15dp"
+        android:paddingBottom="8dp"
+        android:textColorHint="@color/primary_1"
+        android:textSize="16sp"
+        app:drawableEndCompat="@drawable/ic_arrow"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
+
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_1"
+
+        />
+
+
+    <TextView
+        android:id="@+id/text_view_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="8dp"
+        android:paddingStart="15dp"
+        android:text="Пол"
+        android:textColor="@color/primary_1"
+        android:textSize="16sp"
+
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_2" />
+
+    <TextView
+        android:id="@+id/gender"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/custom_text_view"
+        android:hint="Выберите пол"
+        android:paddingStart="15dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="15dp"
+        android:paddingBottom="8dp"
+        android:textColorHint="@color/primary_1"
+        android:textSize="16sp"
+        app:drawableEndCompat="@drawable/ic_arrow"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_3" />
+
+    <TextView
+        android:id="@+id/text_view_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="8dp"
+        android:paddingStart="15dp"
+        android:text="Имя"
+
+        android:textColor="@color/primary_1"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/gender" />
+
+
+    <EditText
+        android:id="@+id/human_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/custom_text_view"
+        android:hint="Введите имя"
+        android:paddingStart="15dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="15dp"
+        android:paddingBottom="10dp"
+        android:textColorHint="@color/primary_1"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_4" />
+
+    <Button
+        android:id="@+id/found_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/custom_orange_button_found"
+        android:text="Поиск"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
+
+
+        app:layout_constraintTop_toBottomOf="@+id/human_name" />
+
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/navigation"
         app:itemBackground="@color/dark_blue"
-        app:itemTextColor="@drawable/selector"
-        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/menu_selector"
+        app:itemIconTint="@drawable/menu_selector"
         app:menu="@menu/menu_bottom"
-        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
