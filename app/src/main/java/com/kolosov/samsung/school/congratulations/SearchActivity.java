@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -14,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -30,6 +30,7 @@ public class SearchActivity extends AppCompatActivity {
     private ArrayList<String> holidaysNames;
     private ArrayList<String> genderName;
     private Dialog dialog;
+    private Button search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,15 @@ public class SearchActivity extends AppCompatActivity {
         textView2 = findViewById(R.id.text_view_2);
         textView3 = findViewById(R.id.gender);
 
+        search = findViewById(R.id.add_found_button);
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SearchActivity.this , SearchResultActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         holidaysNames = new ArrayList<>();

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_color"
+    tools:context=".HomeActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="24dp"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical_end"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="24dp"/>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="32dp"/>
+
+    <TextView
+        android:id="@+id/results_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Результаты"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
+        />
+
+    <TextView
+        android:id="@+id/count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Найдено: "
+        android:textColor="@color/primary_1"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
+        app:layout_constraintBaseline_toBaselineOf="@+id/results_text_view"
+
+        />
+
+    <ImageButton
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/main_color"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/results_text_view" />
+
+    <TextView
+        android:id="@+id/back_to_filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="19dp"
+
+        android:text="Назад к фильтру"
+
+        android:textSize="18sp"
+
+        app:layout_constraintStart_toEndOf="@+id/back_button"
+        app:layout_constraintTop_toBottomOf="@+id/results_text_view" />
+
+
+    <TextView
+
+        android:id="@+id/congratulation_text"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingTop="16dp"
+        android:textSize="21sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/white"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/copy"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@id/back_button" />
+
+    <Button
+        android:id="@+id/add_found_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/custom_orange_button_found"
+        android:text="Поиск"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+
+
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical" />
+
+
+    <ImageView
+        android:id="@+id/share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_share"
+        app:layout_constraintBottom_toTopOf="@+id/add_found_button"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical" />
+
+    <ImageView
+        android:id="@+id/copy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_copy"
+        app:layout_constraintBottom_toTopOf="@+id/add_found_button"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
+
+        />
+
+    <ImageView
+        android:id="@+id/favorite_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_favorite"
+        app:layout_constraintBottom_toTopOf="@+id/add_found_button"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end" />
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemBackground="@color/dark_blue"
+        app:itemIconTint="@drawable/menu_selector"
+        app:itemTextColor="@drawable/menu_selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_bottom" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

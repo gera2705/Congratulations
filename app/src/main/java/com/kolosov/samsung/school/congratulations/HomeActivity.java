@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class HomeActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
+    private ImageButton addButton;
 
 
 
@@ -27,6 +29,12 @@ public class HomeActivity extends AppCompatActivity {
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
 
 
+        addButton = findViewById(R.id.right_button);
+
+        addButton.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this , AddActivity.class);
+            startActivity(intent);
+        });
 
 
 

@@ -9,10 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Congratulations">
-        <activity android:name=".FavoriteActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".CalendarActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".SearchActivity" android:screenOrientation="portrait"  />
-        <activity android:name=".HomeActivity" android:screenOrientation="portrait">
+        <activity android:name=".AddResultActivity"></activity>
+        <activity android:name=".AddActivity" />
+        <activity android:name=".SearchResultActivity" />
+        <activity
+            android:name=".FavoriteActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CalendarActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".HomeActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
