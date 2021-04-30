@@ -50,11 +50,14 @@
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         android:contentDescription="@string/HelpButtonDescription" />
 
+
+
+
     <TextView
         android:id="@+id/found_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         android:text="Добавить праздник"
         android:textColor="@color/white"
         android:textSize="28sp"
@@ -63,31 +66,38 @@
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
+
+
     <TextView
         android:id="@+id/add_main_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/white"
-
-        android:textSize="14sp"
-        android:text="Добавьте новую значимую дату, а мы\nвам напомним о ней :)"
+        android:layout_marginTop="4dp"
         android:gravity="center"
+
+        android:text="Добавьте новую значимую дату, а мы\nвам напомним о ней :)"
+        android:textColor="@color/white"
+        android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
         app:layout_constraintTop_toBottomOf="@+id/found_text" />
+
+
+
 
     <TextView
         android:id="@+id/text_view_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:paddingStart="15dp"
         android:text="Название события*"
         android:textColor="@color/primary_1"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
-        app:layout_constraintTop_toBottomOf="@+id/add_main_text" />
+        app:layout_constraintTop_toBottomOf="@+id/add_main_text"
+
+        />
 
     <EditText
         android:id="@+id/congratulation_name"
@@ -97,9 +107,9 @@
         android:background="@drawable/custom_text_view"
         android:hint="Например, Именины Тани"
         android:paddingStart="15dp"
-        android:paddingTop="10dp"
+        android:paddingTop="8dp"
         android:paddingEnd="15dp"
-        android:paddingBottom="10dp"
+        android:paddingBottom="8dp"
         android:textColorHint="@color/primary_1"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
@@ -127,9 +137,9 @@
         android:background="@drawable/custom_text_view"
         android:hint="Дата"
         android:paddingStart="15dp"
-        android:paddingTop="10dp"
+        android:paddingTop="8dp"
         android:paddingEnd="15dp"
-        android:paddingBottom="8dp"
+        android:paddingBottom="6dp"
         android:textColorHint="@color/primary_1"
         android:textSize="16sp"
         app:drawableEndCompat="@drawable/ic_calendar"
@@ -160,9 +170,9 @@
         android:background="@drawable/custom_text_view"
         android:hint="Ваше описание"
         android:paddingStart="15dp"
-        android:paddingTop="10dp"
+        android:paddingTop="8dp"
         android:paddingEnd="15dp"
-        android:paddingBottom="10dp"
+        android:paddingBottom="8dp"
         android:textColorHint="@color/primary_1"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
@@ -174,11 +184,11 @@
         android:id="@+id/remind_me"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:paddingStart="15dp"
         android:text="Напоминанать\nо событии"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
         app:layout_constraintTop_toBottomOf="@+id/congratulation_description" />
 
@@ -187,16 +197,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
         app:layout_constraintTop_toBottomOf="@+id/congratulation_description" />
+
+
 
     <Button
         android:id="@+id/add_found_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/custom_orange_button_found"
         android:text="Добавить"
         android:textAllCaps="false"
@@ -205,6 +217,8 @@
 
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical" />
+
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"

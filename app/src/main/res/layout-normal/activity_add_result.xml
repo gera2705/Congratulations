@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/home_bg"
-    tools:context=".CalendarActivity">
+    tools:context=".AddResultActivity"
+    android:background="@drawable/add_result_bg"
+    >
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vertical"
@@ -61,56 +62,70 @@
         app:layout_constraintStart_toStartOf="parent"
         />
 
-    <CalendarView
-        android:id="@+id/calendar"
+    <TextView
+        android:id="@+id/add_result_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:background="@drawable/custom_button"
-        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="Добавлено\nв календарь"
+        android:textColor="@color/white"
+        android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
-        app:layout_constraintTop_toBottomOf="@id/logo" />
+        app:layout_constraintTop_toBottomOf="@+id/question" />
 
-    <Button
-        android:id="@+id/black_button"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="0dp"
+    <ImageButton
+        android:id="@+id/stylus"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/found_button_selector"
-        android:drawableEnd="@drawable/ic_search"
-        android:paddingStart="23dp"
-        android:paddingEnd="23dp"
-        android:text="@string/found_button_text"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textStyle="normal"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
-
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_stylus"
+        app:layout_constraintBottom_toTopOf="@+id/add_result_main_text"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
-        app:layout_constraintTop_toBottomOf="@+id/calendar" />
+        app:layout_constraintTop_toBottomOf="@id/add_result_text_view" />
 
     <TextView
-
-        android:id="@+id/calendar_result_text"
-
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-
-        android:layout_marginTop="16dp"
-
+        android:id="@+id/add_result_main_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:text="Ваш календарь праздников обновлён.\nТеперь вы можете проверить его или\nдобавить ещё парочку событий"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/to_main_button"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
 
-        android:background="@color/dark_blue"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical" />
 
-        app:layout_constraintBottom_toTopOf="@id/navigation"
+    <Button
 
-        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
+        android:id="@+id/to_main_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/custom_orange_button_found"
+        android:text="На главную"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toTopOf="@+id/add_found_button"
 
-        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
-        app:layout_constraintTop_toBottomOf="@+id/black_button" />
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical" />
 
+    <Button
+        android:id="@+id/add_found_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/custom_orange_button_found_2"
+        android:text="Добавить еще"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+
+
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical" />
 
 
 

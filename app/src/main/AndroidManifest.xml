@@ -9,9 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Congratulations">
-        <activity android:name=".AddResultActivity"></activity>
-        <activity android:name=".AddActivity" />
-        <activity android:name=".SearchResultActivity" />
+        <activity
+            android:name=".AddResultActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".AddActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".SearchResultActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".FavoriteActivity"
             android:screenOrientation="portrait" />

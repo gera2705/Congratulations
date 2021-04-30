@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/home_bg"
-    tools:context=".AddActivity">
-
+    tools:context=".SearchActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vertical"
@@ -31,7 +30,6 @@
         app:layout_constraintGuide_begin="32dp"/>
 
 
-
     <ImageView
         android:id="@+id/logo"
         android:layout_width="wrap_content"
@@ -54,8 +52,8 @@
         android:id="@+id/found_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Добавить праздник"
+        android:layout_marginTop="4dp"
+        android:text="Поиск"
         android:textColor="@color/white"
         android:textSize="28sp"
         android:textStyle="bold"
@@ -67,12 +65,12 @@
         android:id="@+id/add_main_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/white"
-
-        android:textSize="14sp"
-        android:text="Добавьте новую значимую дату, а мы\nвам напомним о ней :)"
+        android:layout_marginTop="4dp"
         android:gravity="center"
+
+        android:text="Находите уникальные поздравления из\nпостоянно обновляющейся базы с лучшими\nпожеланиями"
+        android:textColor="@color/white"
+        android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
         app:layout_constraintTop_toBottomOf="@+id/found_text" />
@@ -81,7 +79,7 @@
         android:id="@+id/text_view_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:paddingStart="15dp"
         android:text="Название события*"
         android:textColor="@color/primary_1"
@@ -89,116 +87,100 @@
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
         app:layout_constraintTop_toBottomOf="@+id/add_main_text" />
 
-    <EditText
-        android:id="@+id/congratulation_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/custom_text_view"
-        android:hint="Например, Именины Тани"
-        android:paddingStart="15dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="15dp"
-        android:paddingBottom="10dp"
-        android:textColorHint="@color/primary_1"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_1" />
-
     <TextView
         android:id="@+id/text_view_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:paddingStart="15dp"
-        android:text="Дата события*"
-        android:textColor="@color/primary_1"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
-        app:layout_constraintTop_toBottomOf="@+id/congratulation_name" />
-
-    <TextView
-        android:id="@+id/calendar_spinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/custom_text_view"
-        android:hint="Дата"
+        android:hint="Например, Пасха"
         android:paddingStart="15dp"
-        android:paddingTop="10dp"
+        android:paddingTop="8dp"
         android:paddingEnd="15dp"
-        android:paddingBottom="8dp"
+        android:paddingBottom="6dp"
         android:textColorHint="@color/primary_1"
         android:textSize="16sp"
-        app:drawableEndCompat="@drawable/ic_calendar"
+        app:drawableEndCompat="@drawable/ic_arrow"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
 
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_2"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_1"
 
         />
+
 
     <TextView
         android:id="@+id/text_view_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+
+        android:layout_marginTop="8dp"
         android:paddingStart="15dp"
-        android:text="Краткое описание"
+        android:text="Пол"
         android:textColor="@color/primary_1"
         android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
-        app:layout_constraintTop_toBottomOf="@+id/calendar_spinner" />
 
-    <EditText
-        android:id="@+id/congratulation_description"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_2" />
+
+    <TextView
+        android:id="@+id/gender"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/custom_text_view"
-        android:hint="Ваше описание"
+        android:hint="Выберите пол"
         android:paddingStart="15dp"
-        android:paddingTop="10dp"
+        android:paddingTop="8dp"
         android:paddingEnd="15dp"
-        android:paddingBottom="10dp"
+        android:paddingBottom="6dp"
+        android:textColorHint="@color/primary_1"
+        android:textSize="16sp"
+        app:drawableEndCompat="@drawable/ic_arrow"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_3" />
+
+    <TextView
+        android:id="@+id/text_view_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="8dp"
+        android:paddingStart="15dp"
+        android:text="Имя"
+
+        android:textColor="@color/primary_1"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/gender" />
+
+
+    <EditText
+        android:id="@+id/human_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/custom_text_view"
+        android:hint="Введите имя"
+        android:paddingStart="15dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="15dp"
+        android:paddingBottom="8dp"
         android:textColorHint="@color/primary_1"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_3" />
-
-    <TextView
-        android:id="@+id/remind_me"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:paddingStart="15dp"
-        android:text="Напоминанать\nо событии"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
-        app:layout_constraintTop_toBottomOf="@+id/congratulation_description" />
-
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
-        app:layout_constraintTop_toBottomOf="@+id/congratulation_description" />
+        app:layout_constraintTop_toBottomOf="@+id/text_view_4" />
 
     <Button
         android:id="@+id/add_found_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/custom_orange_button_found"
-        android:text="Добавить"
+        android:text="Поиск"
         android:textAllCaps="false"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
 
@@ -206,20 +188,19 @@
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical" />
 
+
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:id="@+id/navigation"
         app:itemBackground="@color/dark_blue"
-        app:itemIconTint="@drawable/menu_selector"
         app:itemTextColor="@drawable/menu_selector"
+        app:itemIconTint="@drawable/menu_selector"
+        app:menu="@menu/menu_bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu_bottom" />
-
-
-
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

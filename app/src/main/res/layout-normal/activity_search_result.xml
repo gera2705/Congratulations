@@ -98,7 +98,7 @@
         android:id="@+id/add_found_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/custom_orange_button_found"
         android:text="Поиск"
         android:textAllCaps="false"
