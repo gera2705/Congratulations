@@ -40,7 +40,7 @@ public class SearchActivity extends AppCompatActivity {
         textView2 = findViewById(R.id.text_view_2);
         textView3 = findViewById(R.id.gender);
 
-        search = findViewById(R.id.add_found_button);
+        search = findViewById(R.id.count_text_view);
 
         search.setOnClickListener(new View.OnClickListener() {
             @Override

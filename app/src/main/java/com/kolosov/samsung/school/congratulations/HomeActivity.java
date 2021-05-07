@@ -33,9 +33,12 @@ public class HomeActivity extends AppCompatActivity {
 
     private TextView date;
     private TextView name;
+    private TextView bigDateTextView;
 
     private String currentDate;
 
+    private static final String[] month = {"января" , "февраля" , "марта" , "апреля" , "мая"
+            , "июня" , "июля" , "августа" , "сентября" , "октября" , "ноября" , "декабря" };
 
 
     @Override
@@ -48,6 +51,8 @@ public class HomeActivity extends AppCompatActivity {
         date = findViewById(R.id.date);
 
         name = findViewById(R.id.name);
+
+        bigDateTextView = findViewById(R.id.bigDateTextView);
 
         Log.d("MY_DATE" , currentDate);
 
@@ -85,29 +90,37 @@ public class HomeActivity extends AppCompatActivity {
 
         loadMenu();
 
-        date.setText("Сегодня, " + currentDate);
+        showDate();
+
+
+//        String[] dateArray = currentDate.split("\\.");
+//        date.setText("Сегодня, " + dateArray[2] + " " + getMonth(Integer.parseInt(dateArray[1])));
+//        bigDateTextView.setText(dateArray[2] + "\n" + dateArray[1]);
 
         CongratulationDataBase db = CongratulationDataBase.getDbInstance(this.getApplicationContext());
 
         Congratulation congratulation = db.congratulationDao().getCongratulationByDate("2021.04.30"); //currentDate
 
-//        if(congratulation == null){
-//            String[] date = currentDate.split("\\.");
-//            String day = date[2];
-//            int iDay = Integer.parseInt(day);
-//            iDay += 1;
-//            String newDate = (date[0]+"."+date[1]+"."+iDay);
-//            congratulation = db.congratulationDao().getCongratulationByDate(newDate);
-//        }
-
         name.setText(congratulation.name);
-
-
 
     }
 
-    void loadMenu(){
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        recreate();
+    }
 
+
+
+    void showDate(){
+
+        String[] dateArray = currentDate.split("\\.");
+        date.setText("Сегодня, " + dateArray[2] + " " + getMonth(Integer.parseInt(dateArray[1])));
+        bigDateTextView.setText(dateArray[2] + "\n" + dateArray[1]);
+    }
+
+    void loadMenu(){
 
         Menu menu = bottomNavigationView.getMenu();
         MenuItem menuItem = menu.getItem(0);
@@ -138,6 +151,10 @@ public class HomeActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    public String getMonth(int monthNumber){
+        return month[monthNumber-1];
     }
 
     public String getCurrentDate (){

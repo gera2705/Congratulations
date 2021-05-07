@@ -6,19 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -37,7 +29,7 @@ public class AddActivity extends AppCompatActivity {
 
         calendarSpinner = findViewById(R.id.calendar_spinner);
 
-        addButton = findViewById(R.id.add_found_button);
+        addButton = findViewById(R.id.count_text_view);
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override

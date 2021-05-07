@@ -3,12 +3,21 @@ package com.kolosov.samsung.school.congratulations;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -16,6 +25,13 @@ public class SearchResultActivity extends AppCompatActivity {
 
     private TextView congratulation;
     private BottomNavigationView bottomNavigationView;
+
+    ClipboardManager clipboardManager;
+    ClipData clipData;
+    ImageButton copyButton;
+    TextView congText;
+
+    ImageButton shareButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +51,37 @@ public class SearchResultActivity extends AppCompatActivity {
 
 
         loadMenu();
+
+
+        copyButton = findViewById(R.id.button_copy);
+
+        copyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ClipboardManager clipboard = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("your_text_to_be_copied" , congratulation.getText().toString());
+                clipboard.setPrimaryClip(clip);
+
+                Toast.makeText(SearchResultActivity.this ,"Поздравление скопировано",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        shareButton = findViewById(R.id.button_share);
+
+        shareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, congratulation.getText().toString());
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject");
+                startActivity(Intent.createChooser(sharingIntent, "Share using"));
+
+            }
+        });
+
+
     }
 
     void loadMenu(){

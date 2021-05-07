@@ -68,7 +68,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/main_card"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="222dp"
                 android:layout_marginTop="8dp"
                 android:background="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -97,10 +97,11 @@
                     android:id="@+id/date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/mont_semi_bold"
                     android:text="Сегодня, 14 февраля"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/guideline_vertical_main_card"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -108,7 +109,9 @@
                     android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/georgia_bold"
+
                     android:text="День Святого \nВалентина"
                     android:textColor="@color/dark_blue"
                     android:textSize="26sp"
@@ -117,19 +120,19 @@
 
 
                 <TextView
+                    android:id="@+id/bigDateTextView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginBottom="45dp"
-                    android:gravity="end"
 
+                    android:fontFamily="@font/bodoni_bd_bold"
+                    android:gravity="end"
+                    android:lineSpacingMultiplier="0.8"
                     android:text="12\n02"
                     android:textColor="@color/primary_3"
-                    android:textSize="70sp"
+                    android:textSize="100sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/name"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
@@ -143,12 +146,14 @@
 
                     android:paddingStart="23dp"
                     android:paddingEnd="23dp"
+
                     android:text="@string/found_button_text"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
 
 
-                    android:textSize="12dp"
+                    android:fontFamily="@font/mont_regular"
+                    android:textSize="18sp"
                     android:textStyle="normal"
 
 
@@ -216,7 +221,14 @@
 
                 <HorizontalScrollView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+
+
+                    android:scrollbarStyle="outsideInset"
+                    android:scrollbarTrackHorizontal="@drawable/custom_scroll_bar"
+                    android:scrollbarThumbHorizontal="@drawable/custom_scroll_bar_thumb"
+
+                    >
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -252,6 +264,7 @@
                             style="?android:attr/borderlessButtonStyle"
                             android:layout_width="135dp"
                             android:layout_height="145dp"
+                            android:layout_marginEnd="24dp"
                             android:background="@drawable/left_and_right_button_selector"
                             android:backgroundTint="@color/white" />
 
