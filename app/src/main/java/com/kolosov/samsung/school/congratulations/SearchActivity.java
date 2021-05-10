@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kolosov.samsung.school.congratulations.DataBase.CongratulationDataBase;
@@ -28,7 +29,8 @@ public class SearchActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     private TextView holidayNameTextView;
-    private TextView textView3;
+    private TextView genderTextView;
+    private TextView humanTextView;
     private List<String> holidaysNames;
     private ArrayList<String> genderName;
     private Dialog dialog;
@@ -40,26 +42,24 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
         holidayNameTextView = findViewById(R.id.holiday_name_text_view);
-        textView3 = findViewById(R.id.gender);
-
+        genderTextView = findViewById(R.id.gender);
         search = findViewById(R.id.count_description_text_view);
+        humanTextView = findViewById(R.id.human_name);
+        bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
 
 
+        Bundle arguments = getIntent().getExtras();
 
+        if(arguments != null) {
+            String name = arguments.get("holidayName").toString();
+
+            holidayNameTextView.setText(name);
+        }
 
         CongratulationDataBase db = CongratulationDataBase.getDbInstance(this.getApplicationContext());
 
         holidaysNames = new ArrayList<>();
         holidaysNames = db.congratulationDao().getAllNames();
-//
-//        holidaysNames.add("День рождения");
-//        holidaysNames.add("Новый год");
-//        holidaysNames.add("Пасха");
-//        holidaysNames.add("День защитника отечества");
-//        holidaysNames.add("День рождения");
-//        holidaysNames.add("Новый год");
-//        holidaysNames.add("Пасха");
-//        holidaysNames.add("День защитника отечества");
 
         genderName = new ArrayList<>();
 
@@ -67,7 +67,7 @@ public class SearchActivity extends AppCompatActivity {
         genderName.add("Мужской");
         genderName.add("Женский");
 
-        bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
+
 
         loadMenu();
 
@@ -75,12 +75,16 @@ public class SearchActivity extends AppCompatActivity {
 
         loadGenderSpinner();
 
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        search.setOnClickListener(v -> {
 
-                Intent intent = new Intent(SearchActivity.this , SearchResultActivity.class);
-                intent.putExtra("holidayName" , holidayNameTextView.getText());
+            if (holidayNameTextView.getText().toString().equals("") || genderTextView.getText().toString().equals("") || humanTextView.getText().toString().equals("") ) {
+
+                Toast.makeText(SearchActivity.this, "Заполните все поля!", Toast.LENGTH_SHORT).show();
+
+            }else {
+
+                Intent intent = new Intent(SearchActivity.this, SearchResultActivity.class);
+                intent.putExtra("holidayName", holidayNameTextView.getText());
                 startActivity(intent);
             }
         });
@@ -123,114 +127,103 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     void loadGenderSpinner(){
-        textView3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        genderTextView.setOnClickListener(v -> {
 
 
-                dialog = new Dialog(SearchActivity.this);
+            dialog = new Dialog(SearchActivity.this);
 
-                dialog.setContentView(R.layout.dialog_search_spinner);
+            dialog.setContentView(R.layout.dialog_search_spinner);
 
-                dialog.getWindow().setLayout(1000 , 1200);
+            dialog.getWindow().setLayout(1000 , 1200);
 
-//                Rect displayRectangle = new Rect();
-//                dialog.getWindow().setLayout((int) ( displayRectangle.width() * 0.5f) , (int) ( displayRectangle.height() * 0.5f));
 
-                dialog.show();
+            dialog.show();
 
-                EditText editText = dialog.findViewById(R.id.spinner_edit_text);
+            EditText editText = dialog.findViewById(R.id.spinner_edit_text);
 
-                ListView listView = dialog.findViewById(R.id.list_view);
+            ListView listView = dialog.findViewById(R.id.list_view);
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(SearchActivity.this , android.R.layout.simple_list_item_1, genderName);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(SearchActivity.this , android.R.layout.simple_list_item_1, genderName);
 
-                listView.setAdapter(adapter);
+            listView.setAdapter(adapter);
 
-                editText.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            editText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                    }
+                }
 
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                        adapter.getFilter().filter(s);
-                    }
+                    adapter.getFilter().filter(s);
+                }
 
-                    @Override
-                    public void afterTextChanged(Editable s) {
+                @Override
+                public void afterTextChanged(Editable s) {
 
-                    }
-                });
+                }
+            });
 
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        textView3.setText(adapter.getItem(position));
-                        textView3.setTextColor(getResources().getColor(R.color.dark_blue , null));
-                        dialog.dismiss();
-                    }
-                });
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    genderTextView.setText(adapter.getItem(position));
+                    genderTextView.setTextColor(getResources().getColor(R.color.dark_blue , null));
+                    dialog.dismiss();
+                }
+            });
 
-            }
         });
     }
 
     void loadNameSpinner(){
-        holidayNameTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        holidayNameTextView.setOnClickListener(v -> {
 
-                dialog = new Dialog(SearchActivity.this);
+            dialog = new Dialog(SearchActivity.this);
 
-                dialog.setContentView(R.layout.dialog_search_spinner);
+            dialog.setContentView(R.layout.dialog_search_spinner);
 
-                dialog.getWindow().setLayout(1000 , 1200);
+            dialog.getWindow().setLayout(1000 , 1200);
 
 //                Rect displayRectangle = new Rect();
 //                dialog.getWindow().setLayout((int) ( displayRectangle.width() * 0.5f) , (int) ( displayRectangle.height() * 0.5f));
 
-                dialog.show();
+            dialog.show();
 
-                EditText editText = dialog.findViewById(R.id.spinner_edit_text);
+            EditText editText = dialog.findViewById(R.id.spinner_edit_text);
 
-                ListView listView = dialog.findViewById(R.id.list_view);
+            ListView listView = dialog.findViewById(R.id.list_view);
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(SearchActivity.this , android.R.layout.simple_list_item_1, holidaysNames);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(SearchActivity.this , android.R.layout.simple_list_item_1, holidaysNames);
 
-                listView.setAdapter(adapter);
+            listView.setAdapter(adapter);
 
-                editText.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            editText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                    }
+                }
 
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                        adapter.getFilter().filter(s);
-                    }
+                    adapter.getFilter().filter(s);
+                }
 
-                    @Override
-                    public void afterTextChanged(Editable s) {
+                @Override
+                public void afterTextChanged(Editable s) {
 
-                    }
-                });
+                }
+            });
 
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        holidayNameTextView.setText(adapter.getItem(position));
-                        holidayNameTextView.setTextColor(getResources().getColor(R.color.dark_blue , null));
+            listView.setOnItemClickListener((parent, view, position, id) -> {
+                holidayNameTextView.setText(adapter.getItem(position));
+                holidayNameTextView.setTextColor(getResources().getColor(R.color.dark_blue , null));
 
-                        dialog.dismiss();
-                    }
-                });
+                dialog.dismiss();
+            });
 
-            }
         });
 
     }

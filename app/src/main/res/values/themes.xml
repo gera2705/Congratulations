@@ -4,11 +4,22 @@
         <!-- Primary brand color. -->
 
 
+
     </style>
+
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/main_color</item>
+    </style>
+
+
 
     <style name="Theme.Splash" parent="Theme.AppCompat.NoActionBar">
 
         <item name="android:windowBackground">@drawable/splash</item>
 
     </style>
+
+
+
+
 </resources>

@@ -62,11 +62,11 @@
                 android:id="@+id/main_card"
                 android:layout_width="match_parent"
                 android:layout_height="222dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:background="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/logo" >
+                app:layout_constraintTop_toBottomOf="@+id/logo">
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline_vertical_main_card"
@@ -86,7 +86,7 @@
                     android:id="@+id/date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="16dp"
                     android:fontFamily="@font/mont_semi_bold"
                     android:text="@string/today_is"
                     android:textColor="@color/black"
@@ -99,10 +99,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:layout_marginBottom="24dp"
                     android:fontFamily="@font/georgia_bold"
+                    android:maxWidth="250dp"
                     android:text="@string/name_of_the_holiday"
                     android:textColor="@color/dark_blue"
                     android:textSize="21sp"
+                    app:layout_constraintBottom_toTopOf="@+id/home_black_found_button"
                     app:layout_constraintStart_toEndOf="@+id/guideline_vertical_main_card"
                     app:layout_constraintTop_toBottomOf="@+id/date" />
 
@@ -112,11 +115,12 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bodoni_bd_bold"
                     android:gravity="end"
-                    android:lineSpacingMultiplier="0.8"
+                    android:lineSpacingMultiplier="0.75"
                     android:text="@string/date_of_the_holiday"
-                    android:textColor="@color/primary_3"
+                    android:textColor="@color/pink"
                     android:textSize="100sp"
                     android:textStyle="bold"
+                    android:paddingRight="-15dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -125,7 +129,7 @@
                     android:id="@+id/home_black_found_button"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="24dp"
+                    android:layout_marginBottom="16dp"
                     android:background="@drawable/found_button_selector"
                     android:drawableEnd="@drawable/ic_search"
                     android:fontFamily="@font/mont_regular"
@@ -185,7 +189,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:layout_marginBottom="100dp"
+                android:layout_marginBottom="90dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView" >
@@ -203,37 +207,79 @@
                         android:orientation="horizontal">
 
                         <Button
-                            style="?android:attr/borderlessButtonStyle"
+
+                            android:fontFamily="@font/mont_semi_bold"
+
+                            android:textSize="16sp"
+                           android:text="День Рождения"
+
+                            android:textAllCaps="false"
+
                             android:layout_width="135dp"
                             android:layout_height="145dp"
                             android:layout_marginStart="24dp"
                             android:layout_marginEnd="10dp"
-                            android:background="@drawable/left_and_right_button_selector"
-                            android:backgroundTint="@color/white" />
+
+
+                            android:layout_gravity="left"
+                            android:gravity="left|top"
+                            android:padding="18dp"
+
+                            android:background="@drawable/small_card_button_1"
+                          />
 
                         <Button
+                            android:textAllCaps="false"
+
+                            android:fontFamily="@font/mont_semi_bold"
+
+                            android:textSize="16sp"
+                            android:text="Годовщина свадьбы"
                             style="?android:attr/borderlessButtonStyle"
                             android:layout_width="135dp"
                             android:layout_height="145dp"
                             android:layout_marginEnd="10dp"
-                            android:background="@drawable/left_and_right_button_selector"
-                            android:backgroundTint="@color/white" />
+                            android:layout_gravity="left"
+                            android:gravity="left|top"
+                            android:padding="18dp"
+                            android:background="@drawable/small_card_button_2"
+                           />
 
                         <Button
                             style="?android:attr/borderlessButtonStyle"
+                            android:textAllCaps="false"
+
+                            android:fontFamily="@font/mont_semi_bold"
+
+                            android:textSize="16sp"
+                            android:text="Рождение ребенка"
                             android:layout_width="135dp"
                             android:layout_height="145dp"
                             android:layout_marginEnd="10dp"
-                            android:background="@drawable/left_and_right_button_selector"
-                            android:backgroundTint="@color/white" />
+                            android:layout_gravity="left"
+                            android:gravity="left|top"
+                            android:padding="18dp"
+                            android:background="@drawable/small_card_button_3"
+
+
+                            />
 
                         <Button
+                            android:textAllCaps="false"
+
+                            android:fontFamily="@font/mont_semi_bold"
+
+                            android:textSize="16sp"
+                            android:text="День учителя"
                             style="?android:attr/borderlessButtonStyle"
                             android:layout_width="135dp"
                             android:layout_height="145dp"
                             android:layout_marginEnd="24dp"
-                            android:background="@drawable/left_and_right_button_selector"
-                            android:backgroundTint="@color/white" />
+                            android:layout_gravity="left"
+                            android:gravity="left|top"
+                            android:padding="18dp"
+                            android:background="@drawable/small_card_button_4"
+                            />
 
                     </LinearLayout>
                 </HorizontalScrollView>

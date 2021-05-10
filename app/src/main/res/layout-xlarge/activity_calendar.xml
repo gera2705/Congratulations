@@ -73,7 +73,7 @@
         app:layout_constraintTop_toBottomOf="@id/logo" />
 
     <Button
-        android:id="@+id/black_button"
+        android:id="@+id/search_button_on_calendar"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -109,7 +109,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
 
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
-        app:layout_constraintTop_toBottomOf="@+id/black_button" />
+        app:layout_constraintTop_toBottomOf="@+id/search_button_on_calendar" />
 
 
 

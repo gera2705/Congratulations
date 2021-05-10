@@ -7,15 +7,19 @@
             <solid    android:color="@color/white" />
             <corners android:radius="25dp"/>
 
-
+            <padding android:bottom="5dp"/>
 
         </shape>
 
     </item>
 
+    <item>
 
+        <bitmap
+            android:src="@drawable/globe_earth"
+            android:gravity="bottom"
 
-
-
+            />
+    </item>
 
 </layer-list>
