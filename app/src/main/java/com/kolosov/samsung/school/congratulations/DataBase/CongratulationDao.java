@@ -13,11 +13,17 @@ public interface CongratulationDao {
     @Query("SELECT * FROM congratulation")
     List<Congratulation> getAllCongratulation();
 
+    @Query("SELECT name FROM congratulation")
+    List<String> getAllNames();
+
     @Query("SELECT * FROM congratulation WHERE name = :congName")
     Congratulation getCongratulation(String congName);
 
     @Query("SELECT * FROM congratulation WHERE date= :congDate")
     Congratulation getCongratulationByDate(String congDate);
+
+    @Query("SELECT * FROM congratulation WHERE date= :congDate")
+    List<Congratulation> getAllCongratulationByDate(String congDate);
 
     @Insert
     void insertCongratulation(Congratulation... congratulations);

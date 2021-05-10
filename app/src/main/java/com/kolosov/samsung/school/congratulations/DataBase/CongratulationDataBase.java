@@ -10,6 +10,11 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.google.gson.Gson;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.concurrent.Executors;
 
 @Database(entities = {Congratulation.class} , version = 1 , exportSchema = false)
@@ -31,21 +36,69 @@ public abstract class CongratulationDataBase extends RoomDatabase {
                                 @RequiresApi(api = Build.VERSION_CODES.O)
                                 @Override
                                 public void run() {
-//                                   List<User> userList = new ArrayList<>();
 
-//                                    String stringDate="01/12/1995";
-//                                    Date date=new SimpleDateFormat("dd/MM/yyyy").parse(stringDate);
-//                                    System.out.println("Date is : "+date);
 
-                                    Congratulation congratulation = new Congratulation();
+                                    String json = "";
+                                    try {
+//                                        InputStream is = getAssets()
+                                        InputStream is = context.getAssets().open("testCong.json");
+                                        int size = is.available();
+                                        byte[] buffer = new byte[size];
+                                        is.read(buffer);
+                                        is.close();
+                                        json = new String(buffer, "UTF-8");
+                                    } catch (IOException ex) {
+                                        ex.printStackTrace();
 
-                                    congratulation.name="День дня";
-                                    congratulation.date= "2021.04.30";
-//                                    List<String> strings = new ArrayList<>();
-//                                    strings.add("С новым годом");
-                                    congratulation.congratulationText = "С новым годом!";
+                                    }
 
-                                    getDbInstance(context).congratulationDao().insertCongratulation(congratulation);
+//
+//                                    StringBuilder fileData = new StringBuilder();
+//                                    try(BufferedReader br = new BufferedReader(new FileReader("testCong.json"))){
+//                                        String readLine = "";
+//                                        while((readLine = br.readLine()) != null){
+//                                            fileData.append(readLine);
+//                                        }
+//                                    }catch(IOException ex){
+//                                        ex.printStackTrace();
+//                                    }
+////
+//                                    Log.d("JSON_DATA" , fileData.toString());
+
+//                                    GsonBuilder builder = new GsonBuilder();
+//                                    Gson gson = builder.create();
+//                                    Congratulation congratulation = gson.fromJson()
+//                                    Cat murzik = gson.fromJson(jsonText, Cat.class);
+//                                    Log.i("GSON", "Имя: " + murzik.name + "\nВозраст: " + murzik.age);
+
+                                   // ArrayList<CongratulationJson> congratulations = new ArrayList<>();
+
+
+                                    Gson gson = new Gson();
+                                    CongratulationJson congratulationJson = gson.fromJson(json, CongratulationJson.class);
+
+
+                                     ArrayList<CongratulationModel> congratulations = congratulationJson.getHolidays();
+
+
+                                    for (CongratulationModel c: congratulations) {
+                                        Congratulation congratulation = new Congratulation();
+                                        congratulation.name = c.getName();
+                                        congratulation.description = c.getDescription();
+                                        congratulation.date = c.getDate();
+                                        congratulation.congratulationText = c.getText();
+                                        getDbInstance(context).congratulationDao().insertCongratulation(congratulation);
+                                    }
+//
+//                                    Congratulation congratulation = new Congratulation();
+//
+//                                    congratulation.name="День дня";
+//                                    congratulation.date= "2021.4.30";
+//                                    congratulation.description="";
+////
+//                                    congratulation.congratulationText = "С новым годом!";
+//
+//                                    getDbInstance(context).congratulationDao().insertCongratulation(congratulation);
 
                                 }
                             });
@@ -57,5 +110,23 @@ public abstract class CongratulationDataBase extends RoomDatabase {
         return INSTANCE;
 
     }
+
+
+//    public String readJSONFromAsset() {
+//        String json = "";
+//        try {
+//            InputStream is = getAssets()
+////            InputStream is = getAssets().open("yourFile.json");
+//            int size = is.available();
+//            byte[] buffer = new byte[size];
+//            is.read(buffer);
+//            is.close();
+//            json = new String(buffer, "UTF-8");
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//            return null;
+//        }
+//        return json;
+//    }
 
 }

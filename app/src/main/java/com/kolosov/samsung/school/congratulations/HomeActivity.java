@@ -17,6 +17,7 @@ import android.widget.Toast;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -90,7 +91,7 @@ public class HomeActivity extends AppCompatActivity {
 
         loadMenu();
 
-        showDate();
+
 
 
 //        String[] dateArray = currentDate.split("\\.");
@@ -99,9 +100,19 @@ public class HomeActivity extends AppCompatActivity {
 
         CongratulationDataBase db = CongratulationDataBase.getDbInstance(this.getApplicationContext());
 
-        Congratulation congratulation = db.congratulationDao().getCongratulationByDate("2021.04.30"); //currentDate
+        String[] dateArray = currentDate.split("\\.");
 
-        name.setText(congratulation.name);
+        showDate(dateArray);
+
+        String date = dateArray[2] + "." + dateArray[1] + "." + dateArray[0];
+
+        try {
+            Congratulation congratulation = db.congratulationDao().getCongratulationByDate(date); //currentDate
+            name.setText(congratulation.name);
+        }catch (NullPointerException e){
+            name.setText("Сегодня нет никакого праздника!\nДобавьте свой!");
+        }
+
 
     }
 
@@ -113,9 +124,9 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-    void showDate(){
+    void showDate(String[] dateArray){
 
-        String[] dateArray = currentDate.split("\\.");
+
         date.setText("Сегодня, " + dateArray[2] + " " + getMonth(Integer.parseInt(dateArray[1])));
         bigDateTextView.setText(dateArray[2] + "\n" + dateArray[1]);
     }

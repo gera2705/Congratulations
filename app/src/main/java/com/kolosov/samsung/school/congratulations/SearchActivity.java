@@ -19,15 +19,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.kolosov.samsung.school.congratulations.DataBase.CongratulationDataBase;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SearchActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
-    private TextView textView2;
+    private TextView holidayNameTextView;
     private TextView textView3;
-    private ArrayList<String> holidaysNames;
+    private List<String> holidaysNames;
     private ArrayList<String> genderName;
     private Dialog dialog;
     private Button search;
@@ -37,30 +39,27 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        textView2 = findViewById(R.id.text_view_2);
+        holidayNameTextView = findViewById(R.id.holiday_name_text_view);
         textView3 = findViewById(R.id.gender);
 
-        search = findViewById(R.id.count_text_view);
+        search = findViewById(R.id.count_description_text_view);
 
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SearchActivity.this , SearchResultActivity.class);
-                startActivity(intent);
-            }
-        });
 
+
+
+        CongratulationDataBase db = CongratulationDataBase.getDbInstance(this.getApplicationContext());
 
         holidaysNames = new ArrayList<>();
-
-        holidaysNames.add("День рождения");
-        holidaysNames.add("Новый год");
-        holidaysNames.add("Пасха");
-        holidaysNames.add("День защитника отечества");
-        holidaysNames.add("День рождения");
-        holidaysNames.add("Новый год");
-        holidaysNames.add("Пасха");
-        holidaysNames.add("День защитника отечества");
+        holidaysNames = db.congratulationDao().getAllNames();
+//
+//        holidaysNames.add("День рождения");
+//        holidaysNames.add("Новый год");
+//        holidaysNames.add("Пасха");
+//        holidaysNames.add("День защитника отечества");
+//        holidaysNames.add("День рождения");
+//        holidaysNames.add("Новый год");
+//        holidaysNames.add("Пасха");
+//        holidaysNames.add("День защитника отечества");
 
         genderName = new ArrayList<>();
 
@@ -75,6 +74,16 @@ public class SearchActivity extends AppCompatActivity {
         loadNameSpinner();
 
         loadGenderSpinner();
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(SearchActivity.this , SearchResultActivity.class);
+                intent.putExtra("holidayName" , holidayNameTextView.getText());
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -170,7 +179,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     void loadNameSpinner(){
-        textView2.setOnClickListener(new View.OnClickListener() {
+        holidayNameTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -214,8 +223,8 @@ public class SearchActivity extends AppCompatActivity {
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        textView2.setText(adapter.getItem(position));
-                        textView2.setTextColor(getResources().getColor(R.color.dark_blue , null));
+                        holidayNameTextView.setText(adapter.getItem(position));
+                        holidayNameTextView.setTextColor(getResources().getColor(R.color.dark_blue , null));
 
                         dialog.dismiss();
                     }

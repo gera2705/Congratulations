@@ -22,6 +22,7 @@ public class AddActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private Button addButton;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +30,7 @@ public class AddActivity extends AppCompatActivity {
 
         calendarSpinner = findViewById(R.id.calendar_spinner);
 
-        addButton = findViewById(R.id.count_text_view);
+        addButton = findViewById(R.id.count_description_text_view);
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +39,8 @@ public class AddActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
 
 
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
@@ -64,32 +67,37 @@ public class AddActivity extends AppCompatActivity {
 
                 calendarView = findViewById(R.id.c);
 
-
+//                calendarView = (CalendarView) findViewById(R.id.calendar);
+//
+//
+//
 //                calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
 //                    @Override
 //                    public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-//                        Toast.makeText(AddActivity.this , "ok" , Toast.LENGTH_LONG).show();
+//
+//                        String date = year + "."  + (month + 1) + "." + dayOfMonth;
+//
+////               resultText.setText(date);
+//
+//                        try {
+//                           calendarSpinner.setText(date);
+//                        }catch (NullPointerException e){
+//                           calendarSpinner.setText("e");
+//                        }
+//
+//
+//
+//
 //                    }
 //                });
+
+
+
 
             }
         });
 
-//        calendarView = findViewById(R.id.c);
-//
-//
-//        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-//            @Override
-//            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-//                int mYear = year;
-//                int mMonth = month;
-//                int mDay = dayOfMonth;
-//                String selectedDate = new StringBuilder().append(mMonth + 1)
-//                        .append("-").append(mDay).append("-").append(mYear)
-//                        .append(" ").toString();
-//                calendarSpinner.setText(selectedDate);
-//            }
-//        });
+
     }
 
 

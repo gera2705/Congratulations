@@ -15,6 +15,9 @@ public class Congratulation {
 
     @ColumnInfo(name = "date")
     public String date;
+    
+    @ColumnInfo(name = "description")
+    public String description;
 
     @ColumnInfo(name = "text")
     public String congratulationText;

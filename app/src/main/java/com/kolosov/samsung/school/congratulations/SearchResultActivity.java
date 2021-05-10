@@ -9,51 +9,117 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.kolosov.samsung.school.congratulations.DataBase.Congratulation;
+import com.kolosov.samsung.school.congratulations.DataBase.CongratulationDataBase;
 
 public class SearchResultActivity extends AppCompatActivity {
 
     private TextView congratulation;
     private BottomNavigationView bottomNavigationView;
 
-    ClipboardManager clipboardManager;
-    ClipData clipData;
+    private TextView smallCounterTextView;
+    private TextView countTextView;
+
+    private ImageButton forwardArrowImageButton;
+    private ImageButton backArrowImageButton;
+
+    private ImageButton backImageButton;
+
     ImageButton copyButton;
-    TextView congText;
 
     ImageButton shareButton;
+
+    private static int currentCongratulationNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
 
+        //initialization
         congratulation = findViewById(R.id.congratulation_text);
+        smallCounterTextView = findViewById(R.id.small_count_text_view);
+        bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
+        copyButton = findViewById(R.id.button_copy);
+        shareButton = findViewById(R.id.button_share);
+        forwardArrowImageButton = findViewById(R.id.forward_arrow_image_button);
+        backArrowImageButton = findViewById(R.id.back_arrow_image_button);
+        countTextView = findViewById(R.id.count_description_text_view);
+        backImageButton = findViewById(R.id.back_button);
+        currentCongratulationNumber = 1;
+        //initialization
 
-        congratulation.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sapien adipiscing condimentum sed sem leo morbi tellus orci. Feugiat a, orci mauris id egestas mi.Nec leo quam vel magna cursus tortor nunc tincidunt. Mauris arcu in eu nam natoque. Vel augue nunc nisi turpis eget quis. Mattis sed felis nisi, pellentesque mauris, cursus amet sagittis. Sed morbi cras feugiat facilisi egestas fringilla. Vitae fusce et nulla amet, felis. At in imperdiet nascetur eu, enim vulputate et.\n" +
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sapien adipiscing condimentum sed sem leo morbi tellus orci. Feugiat a, orci mauris id egestas mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sapien adipiscing condimentum sed sem leo morbi tellus orci. Feugiat a, orci mauris id egestas mi.\n" +
-                "Nec leo quam vel magna cursus tortor nunc tincidunt. Mauris arcu in eu nam natoque. Vel augue nunc nisi turpis eget quis. Mattis sed felis nisi, pellentesque mauris, cursus amet sagittis. Sed morbi cras feugiat facilisi egestas fringilla. Vitae fusce et nulla amet, felis. At in imperdiet nascetur eu, enim vulputate et.\n" +
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sapien adipiscing condimentum sed sem leo morbi tellus orci. Feugiat a, orci mauris id egestas mi.");
 
+
+        Bundle arguments = getIntent().getExtras();
+        String name = arguments.get("holidayName").toString();
+
+        CongratulationDataBase db = CongratulationDataBase.getDbInstance(this.getApplicationContext());
+
+        Congratulation receivedCongratulation = db.congratulationDao().getCongratulation(name);
+
+        String[] strings = receivedCongratulation.congratulationText.split("\\|");
+
+
+
+        smallCounterTextView.setText("Найдено: " + strings.length);
+
+        congratulation.setText(strings[currentCongratulationNumber-1]);
+
+        countTextView.setText( currentCongratulationNumber + "/" + strings.length);
         congratulation.setMovementMethod(new ScrollingMovementMethod());
 
-        bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
+
 
 
         loadMenu();
 
 
-        copyButton = findViewById(R.id.button_copy);
+        forwardArrowImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(currentCongratulationNumber != strings.length) {
+                    currentCongratulationNumber++;
+                }
+                congratulation.setText(strings[currentCongratulationNumber - 1]);
+
+                countTextView.setText( currentCongratulationNumber + "/" + strings.length);
+            }
+        });
+
+        backArrowImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(currentCongratulationNumber > 1) {
+                    currentCongratulationNumber--;
+                }
+
+                congratulation.setText(strings[currentCongratulationNumber - 1]);
+
+                countTextView.setText( currentCongratulationNumber + "/" + strings.length);
+
+            }
+        });
+
+        backImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SearchResultActivity.this.finish();
+            }
+        });
+
+
+
 
         copyButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +132,7 @@ public class SearchResultActivity extends AppCompatActivity {
             }
         });
 
-        shareButton = findViewById(R.id.button_share);
+
 
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +142,7 @@ public class SearchResultActivity extends AppCompatActivity {
                 sharingIntent.setType("text/plain");
                 sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, congratulation.getText().toString());
                 sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject");
-                startActivity(Intent.createChooser(sharingIntent, "Share using"));
+                startActivity(Intent.createChooser(sharingIntent, "Поделиться поздравлением"));
 
             }
         });

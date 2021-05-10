@@ -53,7 +53,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_card"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="300dp"
         android:layout_marginTop="16dp"
         android:background="@color/home_card"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,23 +68,23 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="24dp"/>
+            app:layout_constraintGuide_begin="24dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_vertical_end_main_card"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="vertical"
-            app:layout_constraintGuide_end="24dp"/>
+            app:layout_constraintGuide_end="24dp" />
 
         <TextView
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:textSize="20sp"
             android:text="Сегодня, 14 февраля"
             android:textColor="@color/black"
+            android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/guideline_vertical_main_card"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -105,49 +105,43 @@
 
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="100dp"
             android:background="@drawable/found_button_selector"
-            android:text="@string/found_button_text"
-            android:textColor="@color/white"
-            android:paddingEnd="23dp"
-            android:paddingStart="23dp"
-            android:textStyle="normal"
             android:drawableEnd="@drawable/ic_search"
+            android:paddingStart="23dp"
+            android:paddingEnd="23dp"
+            android:text="@string/found_button_text"
             android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textStyle="normal"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end_main_card"
 
             app:layout_constraintStart_toEndOf="@+id/guideline_vertical_main_card"
             app:layout_constraintTop_toBottomOf="@+id/name" />
 
 
-
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 
     <ImageButton
         android:id="@+id/left_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_left_button_bg"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/left_and_right_button_selector"
+        android:src="@drawable/ic_left_button_bg"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
-        app:layout_constraintTop_toBottomOf="@+id/main_card"
-         />
+        app:layout_constraintTop_toBottomOf="@+id/main_card" />
 
 
     <ImageButton
 
         android:id="@+id/right_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_right_button_bg"
-        android:background="@drawable/left_and_right_button_selector"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/left_and_right_button_selector"
+        android:src="@drawable/ic_right_button_bg"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintTop_toBottomOf="@+id/main_card" />
 
