@@ -27,9 +27,11 @@ public class AddActivity extends AppCompatActivity {
         calendarSpinner = findViewById(R.id.calendar_spinner);
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
 
-        addButton = findViewById(R.id.count_description_text_view);
+        addButton = findViewById(R.id.add_still_button);
 
         addButton.setOnClickListener(v -> {
+
+
             Intent intent = new Intent(AddActivity.this , AddResultActivity.class);
             startActivity(intent);
         });

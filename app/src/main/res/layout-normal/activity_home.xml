@@ -198,6 +198,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:scrollbarStyle="outsideInset"
+
                     android:scrollbarThumbHorizontal="@drawable/custom_scroll_bar_thumb"
                     android:scrollbarTrackHorizontal="@drawable/custom_scroll_bar" >
 
@@ -208,6 +209,7 @@
 
                         <Button
 
+                            android:id="@+id/small_button_1"
                             android:fontFamily="@font/mont_semi_bold"
 
                             android:textSize="16sp"
@@ -229,6 +231,7 @@
                           />
 
                         <Button
+                            android:id="@+id/small_button_2"
                             android:textAllCaps="false"
 
                             android:fontFamily="@font/mont_semi_bold"
@@ -246,6 +249,7 @@
                            />
 
                         <Button
+                            android:id="@+id/small_button_3"
                             style="?android:attr/borderlessButtonStyle"
                             android:textAllCaps="false"
 
@@ -265,6 +269,7 @@
                             />
 
                         <Button
+                            android:id="@+id/small_button_4"
                             android:textAllCaps="false"
 
                             android:fontFamily="@font/mont_semi_bold"

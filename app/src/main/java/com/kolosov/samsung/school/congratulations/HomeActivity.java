@@ -36,6 +36,11 @@ public class HomeActivity extends AppCompatActivity {
     private TextView name;
     private TextView bigDateTextView;
 
+    private Button smallButton1;
+    private Button smallButton2;
+    private Button smallButton3;
+    private Button smallButton4;
+
     private String currentDate;
 
     private static final String[] month = {"января" , "февраля" , "марта" , "апреля" , "мая"
@@ -46,6 +51,11 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        smallButton1 = findViewById(R.id.small_button_1);
+        smallButton2 = findViewById(R.id.small_button_2);
+        smallButton3 = findViewById(R.id.small_button_3);
+        smallButton4 = findViewById(R.id.small_button_4);
 
         currentDate = getCurrentDate();
 
@@ -60,6 +70,47 @@ public class HomeActivity extends AppCompatActivity {
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
 
         foundBlackButton = findViewById(R.id.home_black_found_button);
+
+
+        smallButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
+                intent.putExtra("holidayName", smallButton1.getText());
+                startActivity(intent);
+            }
+        });
+
+        smallButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
+                intent.putExtra("holidayName", smallButton2.getText());
+                startActivity(intent);
+            }
+        });
+
+        smallButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
+                intent.putExtra("holidayName", smallButton3.getText());
+                startActivity(intent);
+            }
+        });
+
+        smallButton4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
+                intent.putExtra("holidayName", smallButton4.getText());
+                startActivity(intent);
+            }
+        });
+
 
         foundBlackButton.setOnClickListener(new View.OnClickListener() {
             @Override

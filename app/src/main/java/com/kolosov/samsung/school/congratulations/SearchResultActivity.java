@@ -52,7 +52,7 @@ public class SearchResultActivity extends AppCompatActivity {
         shareButton = findViewById(R.id.button_share);
         forwardArrowImageButton = findViewById(R.id.forward_arrow_image_button);
         backArrowImageButton = findViewById(R.id.back_arrow_image_button);
-        countTextView = findViewById(R.id.count_description_text_view);
+        countTextView = findViewById(R.id.add_still_button);
         backImageButton = findViewById(R.id.back_button);
         currentCongratulationNumber = 1;
         //initialization

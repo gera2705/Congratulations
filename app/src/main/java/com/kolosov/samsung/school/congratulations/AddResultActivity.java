@@ -6,12 +6,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class AddResultActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
+    private Button toHomeButton;
+    private Button addStillButton;
+    private ImageButton stylusButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +25,34 @@ public class AddResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_result);
 
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
+        toHomeButton = findViewById(R.id.to_main_button);
+        addStillButton = findViewById(R.id.add_still_button);
+        stylusButton = findViewById(R.id.stylus_button);
+
+        toHomeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddResultActivity.this , HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        addStillButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              finish();
+            }
+        });
+
+        stylusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
+
         loadMenu();
     }
 

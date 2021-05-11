@@ -43,7 +43,7 @@ public class SearchActivity extends AppCompatActivity {
 
         holidayNameTextView = findViewById(R.id.holiday_name_text_view);
         genderTextView = findViewById(R.id.gender);
-        search = findViewById(R.id.count_description_text_view);
+        search = findViewById(R.id.add_still_button);
         humanTextView = findViewById(R.id.human_name);
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
 
@@ -183,6 +183,8 @@ public class SearchActivity extends AppCompatActivity {
             dialog = new Dialog(SearchActivity.this);
 
             dialog.setContentView(R.layout.dialog_search_spinner);
+
+
 
             dialog.getWindow().setLayout(1000 , 1200);
 

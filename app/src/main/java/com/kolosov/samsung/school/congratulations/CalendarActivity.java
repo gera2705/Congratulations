@@ -1,16 +1,13 @@
 package com.kolosov.samsung.school.congratulations;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,7 +24,6 @@ import com.kolosov.samsung.school.congratulations.DataBase.CongratulationDataBas
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -54,7 +50,7 @@ public class CalendarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calendar);
 
         //initialization
-        countDescriptionTextView = findViewById(R.id.count_description_text_view);
+        countDescriptionTextView = findViewById(R.id.add_still_button);
         backImageButton = findViewById(R.id.back_description_arrow_image_button);
         forwardImageButton = findViewById(R.id.forward_description_arrow_image_button);
         resultText = findViewById(R.id.calendar_result_text);

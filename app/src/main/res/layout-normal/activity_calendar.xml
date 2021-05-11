@@ -124,7 +124,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/search_button_on_calendar" />
 
             <TextView
-                android:id="@+id/count_description_text_view"
+                android:id="@+id/add_still_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -171,7 +171,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
                 app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
-                app:layout_constraintTop_toBottomOf="@+id/count_description_text_view" />
+                app:layout_constraintTop_toBottomOf="@+id/add_still_button" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
