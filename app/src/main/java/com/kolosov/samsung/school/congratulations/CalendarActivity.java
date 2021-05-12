@@ -8,6 +8,7 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -73,6 +74,7 @@ public class CalendarActivity extends AppCompatActivity {
 
         for (Congratulation congratulation : congratulationsOnDate) {
             description.add(congratulation.description);
+
         }
 
         countDescriptionTextView.setText(currentDatesNumber + "/" + description.size());
@@ -118,22 +120,27 @@ public class CalendarActivity extends AppCompatActivity {
         });
 
 
+
         calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
 
             try {
 
-                String day = String.valueOf(dayOfMonth);
-                String m = String.valueOf(month);
+//                String day = String.valueOf(dayOfMonth);
+//                String m = String.valueOf(month);
+//
+//                if (dayOfMonth < 10) {
+//                    day = "0" + dayOfMonth;
+//                }
+//
+//                if ((month + 1) < 10) {
+//                    m = "0" + (month + 1);
+//                }
 
-                if (dayOfMonth < 10) {
-                    day = "0" + dayOfMonth;
-                }
 
-                if ((month + 1) < 10) {
-                    m = "0" + (month + 1);
-                }
 
-                date = day + "." + m + "." + year;
+                date = (month + 1) + "/" + dayOfMonth + "/" + String.valueOf(year).substring(2);
+
+               // Log.d("FirstDate" , date);
 
                 currentDatesNumber = 1;
 
@@ -210,7 +217,7 @@ public class CalendarActivity extends AppCompatActivity {
         int sizeStartIndex =  congratulationsOnDate.get(currentDatesNumber - 1).date.length();
         int sizeEndIndex = congratulationsOnDate.get(currentDatesNumber - 1).name.length()+ 1 + congratulationsOnDate.get(currentDatesNumber - 1).date.length();
         int colorEndIndex = congratulationsOnDate.get(currentDatesNumber - 1).date.length();
-        SpannableString ss =  new SpannableString(congratulationsOnDate.get(currentDatesNumber - 1).date + "\n"+ congratulationsOnDate.get(currentDatesNumber - 1).name + "\n" + description.get(0));
+        SpannableString ss =  new SpannableString(congratulationsOnDate.get(currentDatesNumber - 1).date + "\n"+ congratulationsOnDate.get(currentDatesNumber - 1).name + "\n" + description.get(currentDatesNumber - 1));
         ss.setSpan(new RelativeSizeSpan(1.5f), sizeStartIndex , sizeEndIndex , Spanned.SPAN_EXCLUSIVE_INCLUSIVE); // устанавливаем размер
         ss.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.primary_2)), 0, colorEndIndex, Spanned.SPAN_EXCLUSIVE_INCLUSIVE); // устанавливаем цвет
 
@@ -247,10 +254,10 @@ public class CalendarActivity extends AppCompatActivity {
     }
 
 
-    public String getCurrentDate() {
+    public String getCurrentDate (){
         // Текущее время
         Date currentDate = new Date();
-        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
+        DateFormat dateFormat = new SimpleDateFormat("M/d/yy", Locale.getDefault());
         return dateFormat.format(currentDate);
     }
 

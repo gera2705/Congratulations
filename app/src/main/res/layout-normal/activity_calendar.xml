@@ -66,9 +66,7 @@
                 android:id="@+id/calendar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-
-               android:theme="@style/DialogTheme"
+                android:theme="@style/DialogTheme"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/custom_button"
                 app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
@@ -92,7 +90,6 @@
                 android:textSize="18sp"
                 android:textStyle="normal"
                 app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
-
                 app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
                 app:layout_constraintTop_toBottomOf="@+id/calendar" />
 
@@ -101,11 +98,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-
-
                 android:background="@color/main_color"
                 android:src="@drawable/ic_left_arrow"
-
                 app:layout_constraintBottom_toTopOf="@+id/calendar_result_text"
                 app:layout_constraintStart_toStartOf="@+id/guideline_vertical"
                 app:layout_constraintTop_toBottomOf="@+id/search_button_on_calendar" />
@@ -113,10 +107,8 @@
             <ImageButton
                 android:id="@+id/forward_description_arrow_image_button"
                 android:layout_width="wrap_content"
-
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-
                 android:background="@android:color/transparent"
                 android:src="@drawable/ic_right_arrow"
                 app:layout_constraintBottom_toTopOf="@+id/calendar_result_text"
@@ -135,12 +127,9 @@
                 android:paddingLeft="20dp"
                 android:paddingTop="10dp"
                 android:paddingRight="20dp"
-
                 android:paddingBottom="8dp"
-                android:text="1/25"
-
+                android:text="@string/calendar_text_view_counter"
                 android:textAllCaps="false"
-
                 android:textColor="@color/white"
                 android:textSize="23sp"
                 app:layout_constraintBottom_toTopOf="@+id/calendar_result_text"
@@ -164,7 +153,7 @@
                 android:padding="10dp"
 
                 android:lineSpacingMultiplier="1.75"
-                android:text="Описание праздника\ndfgdfgdfgdfg"
+                android:text="Описание праздника"
                 android:textColor="@color/white"
 
                 android:textSize="14sp"

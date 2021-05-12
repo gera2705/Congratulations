@@ -9,6 +9,21 @@
     <string name="logo_description">Логотип приложения</string>
     <string name="add_holiday_button_description">Кнопка добавить праздник</string>
     <string name="found_holiday_button_description">Кнопка найти поздравление</string>
+    <string name="add_holiday_heading">Добавить праздник</string>
+    <string name="add_description">Добавьте новую значимую дату, а мы\nвам напомним о ней :)</string>
+    <string name="add_label_1">Название события*</string>
+    <string name="add_text_view_hint_1">Например, Именины Тани</string>
+    <string name="add_label_2">Дата события*</string>
+    <string name="add_text_view_hint_2">Дата</string>
+    <string name="add_label_3">Краткое описание</string>
+    <string name="add_text_view_hint_3">Ваше описание</string>
+    <string name="add_text_view_hint_4">Напоминанать\nо событии</string>
+    <string name="add_button_text">Добавить</string>
+    <string name="add_res_name_heading">Добавлено\nв календарь</string>
+    <string name="add_result_description">Ваш календарь праздников обновлён.\nТеперь вы можете проверить его или\nдобавить ещё парочку событий</string>
+    <string name="add_result_to_home_button">На главную</string>
+    <string name="add_result_add_still_button">Добавить еще</string>
+    <string name="calendar_text_view_counter">1/25</string>
 
     <string-array name="genders">
         <item>Не важно</item>

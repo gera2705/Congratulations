@@ -52,24 +52,25 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        CongratulationDataBase db = CongratulationDataBase.getDbInstance(this.getApplicationContext());
+
         smallButton1 = findViewById(R.id.small_button_1);
         smallButton2 = findViewById(R.id.small_button_2);
         smallButton3 = findViewById(R.id.small_button_3);
         smallButton4 = findViewById(R.id.small_button_4);
-
         currentDate = getCurrentDate();
-
         date = findViewById(R.id.date);
-
         name = findViewById(R.id.name);
-
         bigDateTextView = findViewById(R.id.bigDateTextView);
-
-        Log.d("MY_DATE" , currentDate);
-
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
-
         foundBlackButton = findViewById(R.id.home_black_found_button);
+
+        try {
+            Congratulation congratulation = db.congratulationDao().getCongratulationByDate(currentDate); //currentDate
+            name.setText(congratulation.name);
+        }catch (NullPointerException e){
+            name.setText("Сегодня нет никакого праздника!\nДобавьте свой!");
+        }
 
 
         smallButton1.setOnClickListener(new View.OnClickListener() {
@@ -151,20 +152,15 @@ public class HomeActivity extends AppCompatActivity {
 //        date.setText("Сегодня, " + dateArray[2] + " " + getMonth(Integer.parseInt(dateArray[1])));
 //        bigDateTextView.setText(dateArray[2] + "\n" + dateArray[1]);
 
-        CongratulationDataBase db = CongratulationDataBase.getDbInstance(this.getApplicationContext());
 
-        String[] dateArray = currentDate.split("\\.");
+
+        String[] dateArray = currentDate.split("/");
 
         showDate(dateArray);
 
-        String date = dateArray[2] + "." + dateArray[1] + "." + dateArray[0];
+        //String date = dateArray[2] + "." + dateArray[1] + "." + dateArray[0];
 
-        try {
-            Congratulation congratulation = db.congratulationDao().getCongratulationByDate(date); //currentDate
-            name.setText(congratulation.name);
-        }catch (NullPointerException e){
-            name.setText("Сегодня нет никакого праздника!\nДобавьте свой!");
-        }
+
 
 
     }
@@ -179,9 +175,16 @@ public class HomeActivity extends AppCompatActivity {
 
     void showDate(String[] dateArray){
 
+        if (Integer.parseInt(dateArray[1]) < 10) {
+            dateArray[1] = "0" + dateArray[1];
+        }
 
-        date.setText("Сегодня, " + dateArray[2] + " " + getMonth(Integer.parseInt(dateArray[1])));
-        bigDateTextView.setText(dateArray[2] + "\n" + dateArray[1]);
+        if (Integer.parseInt(dateArray[0]) < 10) {
+            dateArray[0] = "0" + dateArray[0];
+        }
+
+        date.setText("Сегодня, " + dateArray[1] + " " + getMonth(Integer.parseInt(dateArray[0])));
+        bigDateTextView.setText(dateArray[1] + "\n" + dateArray[0]);
     }
 
     void loadMenu(){
@@ -224,7 +227,7 @@ public class HomeActivity extends AppCompatActivity {
     public String getCurrentDate (){
         // Текущее время
         Date currentDate = new Date();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd", Locale.getDefault());
+        DateFormat dateFormat = new SimpleDateFormat("M/d/yy", Locale.getDefault());
         return dateFormat.format(currentDate);
     }
 }
