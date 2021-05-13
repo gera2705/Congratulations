@@ -4,17 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.kolosov.samsung.school.congratulations.DataBase.Congratulation;
+import com.kolosov.samsung.school.congratulations.DataBase.CongratulationDataBase;
 
 import java.util.Calendar;
 
 public class AddActivity extends AppCompatActivity {
 
     private TextView calendarSpinner;
+    private TextView congName;
+    private TextView congDescription;
     private BottomNavigationView bottomNavigationView;
     private Button addButton;
 
@@ -24,16 +30,37 @@ public class AddActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
+        CongratulationDataBase db = CongratulationDataBase.getDbInstance(this.getApplicationContext());
+
         calendarSpinner = findViewById(R.id.calendar_spinner);
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
+        congName = findViewById(R.id.congratulation_name);
+        congDescription = findViewById(R.id.congratulation_description);
 
         addButton = findViewById(R.id.add_still_button);
 
         addButton.setOnClickListener(v -> {
 
+            if(congName.getText().equals("") || congDescription.getText().equals("") || calendarSpinner.getText().equals("")) {
+                Toast.makeText(this, "Заполните все поля!", Toast.LENGTH_SHORT).show();
+            } else{
+                try {
 
-            Intent intent = new Intent(AddActivity.this , AddResultActivity.class);
-            startActivity(intent);
+
+                    Congratulation congratulation = new Congratulation();
+                    congratulation.name = congName.getText().toString();
+                    congratulation.description = congDescription.getText().toString();
+                    String[] dates = calendarSpinner.getText().toString().split("\\.");
+                    congratulation.date = dates[1] + "/" + dates[0] + "/" + dates[2].substring(2);
+                    congratulation.congratulationText = "К сожелению Поздравлений на этот праздник не найдено :(";
+                    db.congratulationDao().insertCongratulation(congratulation);
+
+                    Intent intent = new Intent(AddActivity.this, AddResultActivity.class);
+                    startActivity(intent);
+                }catch (SQLiteException e){
+                    Toast.makeText(this, "Запись с таким название уже существует!\nИзмените название праздника.", Toast.LENGTH_SHORT).show();
+                }
+            }
         });
 
         Calendar calendar = Calendar.getInstance();
