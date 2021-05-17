@@ -46,11 +46,12 @@
         android:background="@drawable/ic_question"
         app:layout_constraintTop_toTopOf="@+id/guideline_horizontal"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
-        android:contentDescription="@string/HelpButtonDescription" />
+        android:contentDescription="@string/help_button_description" />
 
 
     <TextView
         android:id="@+id/found_text"
+        android:fontFamily="@font/georgia_bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -63,6 +64,72 @@
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
 
+    <TextView
+        android:id="@+id/favorite_description_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/mont_regular"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.2"
+        android:text="Сохраненные Вами поздравления хранятся\nв этом разделе"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/found_text" />
+
+    <ImageButton
+        android:id="@+id/stylus_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_favorite_stilys"
+
+        android:contentDescription="TODO"
+        app:layout_constraintBottom_toTopOf="@+id/favorite_description_text_view_2"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
+
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@id/favorite_description_text_view" />
+
+    <TextView
+        android:id="@+id/favorite_description_text_view_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/mont_regular"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.2"
+        android:text="Этот раздел находится в разработке :)"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/favorite_found_button"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical" />
+
+
+    <Button
+        android:id="@+id/favorite_found_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/custom_orange_button_found"
+        android:text="Найти поздравление"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toTopOf="@+id/favorite_to_main_button"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical" />
+
+    <Button
+        android:id="@+id/favorite_to_main_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/custom_orange_button_found_2"
+        android:text="На главную"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"

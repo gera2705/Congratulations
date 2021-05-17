@@ -13,14 +13,14 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="24dp"/>
+        app:layout_constraintGuide_begin="24dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vertical_end"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="24dp"/>
+        app:layout_constraintGuide_end="24dp" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -28,17 +28,16 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="32dp"/>
-
-
+        app:layout_constraintGuide_begin="32dp" />
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/ic_logo"
-        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal"
+        android:contentDescription="@string/logo_image_description"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
+        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal"
         />
 
     <ImageButton
@@ -46,36 +45,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/ic_question"
-        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal"
+        android:contentDescription="@string/help_button_description"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
-        android:contentDescription="@string/HelpButtonDescription" />
+        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal" />
+
 
     <TextView
         android:id="@+id/found_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Добавить праздник"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/georgia_bold"
+        android:text="@string/add_holiday_heading"
         android:textColor="@color/white"
-        android:textSize="28sp"
+        android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
+
 
     <TextView
         android:id="@+id/add_main_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textColor="@color/white"
-
-        android:textSize="14sp"
-        android:text="Добавьте новую значимую дату, а мы\nвам напомним о ней :)"
+        android:fontFamily="@font/mont_regular"
         android:gravity="center"
+        android:lineSpacingMultiplier="1.2"
+        android:text="@string/add_description"
+        android:textColor="@color/white"
+        android:textSize="32sp"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
         app:layout_constraintTop_toBottomOf="@+id/found_text" />
+
 
     <TextView
         android:id="@+id/text_view_1"
@@ -83,11 +87,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:paddingStart="15dp"
-        android:text="Название события*"
+        android:paddingEnd="15dp"
+        android:text="@string/add_label_1"
         android:textColor="@color/primary_1"
-        android:textSize="16sp"
+        android:textSize="21sp"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
-        app:layout_constraintTop_toBottomOf="@+id/add_main_text" />
+        app:layout_constraintTop_toBottomOf="@+id/add_main_text"
+
+        />
 
     <EditText
         android:id="@+id/congratulation_name"
@@ -95,17 +102,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/custom_text_view"
-        android:hint="Например, Именины Тани"
+        android:hint="@string/add_text_view_hint_1"
         android:paddingStart="15dp"
-        android:paddingTop="10dp"
+        android:paddingTop="18dp"
         android:paddingEnd="15dp"
-        android:paddingBottom="10dp"
+        android:paddingBottom="18dp"
         android:textColorHint="@color/primary_1"
-        android:textSize="16sp"
+        android:textSize="26sp"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_1" />
+        app:layout_constraintTop_toBottomOf="@+id/text_view_1"
+        android:importantForAutofill="no"
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/holiday_name_text_view"
@@ -113,9 +122,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:paddingStart="15dp"
-        android:text="Дата события*"
+        android:paddingEnd="15dp"
+        android:text="@string/add_label_2"
         android:textColor="@color/primary_1"
-        android:textSize="16sp"
+        android:textSize="21sp"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
         app:layout_constraintTop_toBottomOf="@+id/congratulation_name" />
 
@@ -125,20 +135,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/custom_text_view"
-        android:hint="Дата"
+        android:hint="@string/add_text_view_hint_2"
         android:paddingStart="15dp"
-        android:paddingTop="10dp"
+        android:paddingTop="18dp"
         android:paddingEnd="15dp"
-        android:paddingBottom="8dp"
+        android:paddingBottom="16dp"
         android:textColorHint="@color/primary_1"
-        android:textSize="16sp"
+        android:textSize="26sp"
         app:drawableEndCompat="@drawable/ic_calendar"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
-
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
-        app:layout_constraintTop_toBottomOf="@+id/holiday_name_text_view"
-
-        />
+        app:layout_constraintTop_toBottomOf="@+id/holiday_name_text_view" />
 
     <TextView
         android:id="@+id/text_view_3"
@@ -146,9 +153,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:paddingStart="15dp"
-        android:text="Краткое описание"
+        android:paddingEnd="15dp"
+        android:text="@string/add_label_3"
         android:textColor="@color/primary_1"
-        android:textSize="16sp"
+        android:textSize="21sp"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
         app:layout_constraintTop_toBottomOf="@+id/calendar_spinner" />
 
@@ -158,27 +166,30 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/custom_text_view"
-        android:hint="Ваше описание"
+        android:hint="@string/add_text_view_hint_3"
         android:paddingStart="15dp"
-        android:paddingTop="10dp"
+        android:paddingTop="18dp"
         android:paddingEnd="15dp"
-        android:paddingBottom="10dp"
+        android:paddingBottom="18dp"
         android:textColorHint="@color/primary_1"
-        android:textSize="16sp"
+        android:textSize="26sp"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_3" />
+        app:layout_constraintTop_toBottomOf="@+id/text_view_3"
+        android:importantForAutofill="no"
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/remind_me"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:paddingStart="15dp"
-        android:text="Напоминанать\nо событии"
+        android:paddingEnd="15dp"
+        android:text="@string/add_text_view_hint_4"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="21sp"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
         app:layout_constraintTop_toBottomOf="@+id/congratulation_description" />
 
@@ -186,25 +197,26 @@
         android:id="@+id/switch1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
         app:layout_constraintTop_toBottomOf="@+id/congratulation_description" />
 
+
     <Button
-        android:id="@+id/add_still_button"
+        android:id="@+id/favorite_to_main_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/custom_orange_button_found"
-        android:text="Добавить"
+        android:text="@string/add_button_text"
+
         android:textAllCaps="false"
+
         app:layout_constraintBottom_toTopOf="@+id/navigation"
-
-
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical" />
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"
@@ -218,8 +230,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_bottom" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

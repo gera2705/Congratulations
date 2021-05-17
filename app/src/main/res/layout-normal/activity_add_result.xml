@@ -35,6 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/ic_logo"
+        android:contentDescription="@string/logo_image_description"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
         app:layout_constraintTop_toTopOf="@+id/guideline_horizontal" />
 
@@ -43,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/ic_question"
-        android:contentDescription="@string/HelpButtonDescription"
+        android:contentDescription="@string/help_button_description"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintTop_toTopOf="@+id/guideline_horizontal" />
 
@@ -76,12 +77,12 @@
         android:id="@+id/stylus_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_stylus"
+        android:background="@drawable/ic_stylus"
         app:layout_constraintBottom_toTopOf="@+id/add_result_main_text"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
-        app:layout_constraintTop_toBottomOf="@id/add_result_text_view" />
+        app:layout_constraintTop_toBottomOf="@id/add_result_text_view"
+        android:contentDescription="@string/add_more_description_button" />
 
     <TextView
         android:id="@+id/add_result_main_text"
@@ -93,24 +94,24 @@
         android:lineSpacingMultiplier="1.2"
         android:text="@string/add_result_description"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/to_main_button"
+        app:layout_constraintBottom_toTopOf="@+id/favorite_found_button"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical" />
 
     <Button
-        android:id="@+id/to_main_button"
+        android:id="@+id/favorite_found_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:background="@drawable/custom_orange_button_found"
         android:text="@string/add_result_to_home_button"
         android:textAllCaps="false"
-        app:layout_constraintBottom_toTopOf="@+id/add_still_button"
+        app:layout_constraintBottom_toTopOf="@+id/favorite_to_main_button"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical" />
 
     <Button
-        android:id="@+id/add_still_button"
+        android:id="@+id/favorite_to_main_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"

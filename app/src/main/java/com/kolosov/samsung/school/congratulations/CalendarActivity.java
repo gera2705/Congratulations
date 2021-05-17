@@ -8,7 +8,6 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -51,7 +50,7 @@ public class CalendarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calendar);
 
         //initialization
-        countDescriptionTextView = findViewById(R.id.add_still_button);
+        countDescriptionTextView = findViewById(R.id.favorite_to_main_button);
         backImageButton = findViewById(R.id.back_description_arrow_image_button);
         forwardImageButton = findViewById(R.id.forward_description_arrow_image_button);
         resultText = findViewById(R.id.calendar_result_text);
@@ -88,7 +87,7 @@ public class CalendarActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(CalendarActivity.this, SearchActivity.class);
                 intent.putExtra("holidayName", congratulationsOnDate.get(currentDatesNumber-1).name);
-                Toast.makeText(CalendarActivity.this, congratulationsOnDate.get(currentDatesNumber-1).name , Toast.LENGTH_SHORT).show();
+                //Toast.makeText(CalendarActivity.this, congratulationsOnDate.get(currentDatesNumber-1).name , Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         });
@@ -125,22 +124,8 @@ public class CalendarActivity extends AppCompatActivity {
 
             try {
 
-//                String day = String.valueOf(dayOfMonth);
-//                String m = String.valueOf(month);
-//
-//                if (dayOfMonth < 10) {
-//                    day = "0" + dayOfMonth;
-//                }
-//
-//                if ((month + 1) < 10) {
-//                    m = "0" + (month + 1);
-//                }
-
-
-
                 date = (month + 1) + "/" + dayOfMonth + "/" + String.valueOf(year).substring(2);
 
-               // Log.d("FirstDate" , date);
 
                 currentDatesNumber = 1;
 
@@ -197,7 +182,7 @@ public class CalendarActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         Intent intent = new Intent(CalendarActivity.this, SearchActivity.class);
                         intent.putExtra("holidayName", congratulationsOnDate1.get(currentDatesNumber-1).name);
-                        Toast.makeText(CalendarActivity.this, congratulationsOnDate1.get(currentDatesNumber-1).name , Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(CalendarActivity.this, congratulationsOnDate1.get(currentDatesNumber-1).name , Toast.LENGTH_SHORT).show();
                          startActivity(intent);
                     }
                 });
@@ -214,10 +199,12 @@ public class CalendarActivity extends AppCompatActivity {
 
     void setResultText(List<Congratulation> congratulationsOnDate , List<String> description){
 
+        String[] dates = congratulationsOnDate.get(currentDatesNumber - 1).date.split("/");
+        String date = dates[1] + "." + dates[0] + "." + dates[2];
         int sizeStartIndex =  congratulationsOnDate.get(currentDatesNumber - 1).date.length();
         int sizeEndIndex = congratulationsOnDate.get(currentDatesNumber - 1).name.length()+ 1 + congratulationsOnDate.get(currentDatesNumber - 1).date.length();
         int colorEndIndex = congratulationsOnDate.get(currentDatesNumber - 1).date.length();
-        SpannableString ss =  new SpannableString(congratulationsOnDate.get(currentDatesNumber - 1).date + "\n"+ congratulationsOnDate.get(currentDatesNumber - 1).name + "\n" + description.get(currentDatesNumber - 1));
+        SpannableString ss =  new SpannableString(date + "\n"+ congratulationsOnDate.get(currentDatesNumber - 1).name + "\n" + description.get(currentDatesNumber - 1));
         ss.setSpan(new RelativeSizeSpan(1.5f), sizeStartIndex , sizeEndIndex , Spanned.SPAN_EXCLUSIVE_INCLUSIVE); // устанавливаем размер
         ss.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.primary_2)), 0, colorEndIndex, Spanned.SPAN_EXCLUSIVE_INCLUSIVE); // устанавливаем цвет
 

@@ -19,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kolosov.samsung.school.congratulations.DataBase.Congratulation;
@@ -66,12 +67,12 @@ public class HomeActivity extends AppCompatActivity {
         foundBlackButton = findViewById(R.id.home_black_found_button);
 
         try {
+
             Congratulation congratulation = db.congratulationDao().getCongratulationByDate(currentDate); //currentDate
             name.setText(congratulation.name);
         }catch (NullPointerException e){
             name.setText("Сегодня нет никакого праздника!\nДобавьте свой!");
         }
-
 
         smallButton1.setOnClickListener(new View.OnClickListener() {
             @Override

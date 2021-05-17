@@ -52,7 +52,7 @@ public class SearchResultActivity extends AppCompatActivity {
         shareButton = findViewById(R.id.button_share);
         forwardArrowImageButton = findViewById(R.id.forward_arrow_image_button);
         backArrowImageButton = findViewById(R.id.back_arrow_image_button);
-        countTextView = findViewById(R.id.add_still_button);
+        countTextView = findViewById(R.id.favorite_to_main_button);
         backImageButton = findViewById(R.id.back_button);
         currentCongratulationNumber = 1;
         //initialization
@@ -60,11 +60,12 @@ public class SearchResultActivity extends AppCompatActivity {
 
 
         Bundle arguments = getIntent().getExtras();
-        String name = arguments.get("holidayName").toString();
+        String holidayName = arguments.get("holidayName").toString();
+        String humanName = arguments.get("humanName").toString();
 
         CongratulationDataBase db = CongratulationDataBase.getDbInstance(this.getApplicationContext());
 
-        Congratulation receivedCongratulation = db.congratulationDao().getCongratulation(name);
+        Congratulation receivedCongratulation = db.congratulationDao().getCongratulation(holidayName);
 
         String[] strings = receivedCongratulation.congratulationText.split("\\|");
 
@@ -72,7 +73,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
         smallCounterTextView.setText("Найдено: " + strings.length);
 
-        congratulation.setText(strings[currentCongratulationNumber-1]);
+        congratulation.setText(humanName + "!\n" + strings[currentCongratulationNumber-1]);
 
         countTextView.setText( currentCongratulationNumber + "/" + strings.length);
         congratulation.setMovementMethod(new ScrollingMovementMethod());
@@ -90,7 +91,7 @@ public class SearchResultActivity extends AppCompatActivity {
                 if(currentCongratulationNumber != strings.length) {
                     currentCongratulationNumber++;
                 }
-                congratulation.setText(strings[currentCongratulationNumber - 1]);
+                congratulation.setText(humanName + "!\n" + strings[currentCongratulationNumber - 1]);
 
                 countTextView.setText( currentCongratulationNumber + "/" + strings.length);
             }
@@ -104,7 +105,7 @@ public class SearchResultActivity extends AppCompatActivity {
                     currentCongratulationNumber--;
                 }
 
-                congratulation.setText(strings[currentCongratulationNumber - 1]);
+                congratulation.setText(humanName + "!\n" + strings[currentCongratulationNumber - 1]);
 
                 countTextView.setText( currentCongratulationNumber + "/" + strings.length);
 

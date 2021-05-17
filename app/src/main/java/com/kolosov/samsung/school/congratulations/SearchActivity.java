@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,7 +32,7 @@ public class SearchActivity extends AppCompatActivity {
     private TextView holidayNameTextView;
     private TextView genderTextView;
     private TextView humanTextView;
-    private List<String> holidaysNames;
+    private static List<String> holidaysNames;
     private ArrayList<String> genderName;
     private Dialog dialog;
     private Button search;
@@ -43,7 +44,7 @@ public class SearchActivity extends AppCompatActivity {
 
         holidayNameTextView = findViewById(R.id.holiday_name_text_view);
         genderTextView = findViewById(R.id.gender);
-        search = findViewById(R.id.add_still_button);
+        search = findViewById(R.id.favorite_to_main_button);
         humanTextView = findViewById(R.id.human_name);
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
 
@@ -58,8 +59,19 @@ public class SearchActivity extends AppCompatActivity {
 
         CongratulationDataBase db = CongratulationDataBase.getDbInstance(this.getApplicationContext());
 
-        holidaysNames = new ArrayList<>();
-        holidaysNames = db.congratulationDao().getAllNames();
+      //  if(holidaysNames == null ) {
+
+
+
+            holidaysNames = new ArrayList<>();
+
+            holidaysNames = new MyAsyncTask().doInBackground(this.getApplicationContext());
+            //holidaysNames = db.congratulationDao().getAllNames();
+       // }
+
+       // holidaysNames = CongratulationDataBase.getNames();
+
+        Log.d("NamesSize" , String.valueOf(holidaysNames.size()));
 
         genderName = new ArrayList<>();
 
@@ -85,6 +97,7 @@ public class SearchActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(SearchActivity.this, SearchResultActivity.class);
                 intent.putExtra("holidayName", holidayNameTextView.getText());
+                intent.putExtra("humanName" , humanTextView.getText());
                 startActivity(intent);
             }
         });
@@ -230,3 +243,4 @@ public class SearchActivity extends AppCompatActivity {
 
     }
 }
+

@@ -47,14 +47,14 @@
                 android:background="@drawable/ic_logo"
                 app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
                 app:layout_constraintTop_toTopOf="@+id/guideline_horizontal"
-                android:contentDescription="@string/logo_description" />
+                android:contentDescription="@string/logo_image_description" />
 
             <ImageButton
                 android:id="@+id/question"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_question"
-                android:contentDescription="@string/HelpButtonDescription"
+                android:contentDescription="@string/help_button_description"
                 app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
                 app:layout_constraintTop_toTopOf="@+id/guideline_horizontal" />
 
@@ -244,7 +244,9 @@
                             android:layout_marginEnd="10dp"
                             android:layout_gravity="left"
                             android:gravity="left|top"
-                            android:padding="18dp"
+                            android:paddingTop="18dp"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
                             android:background="@drawable/small_card_button_2"
                            />
 

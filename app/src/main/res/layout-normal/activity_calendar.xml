@@ -11,7 +11,6 @@
         android:id="@+id/calendar_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:layout_marginBottom="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_question"
-                android:contentDescription="@string/HelpButtonDescription"
+                android:contentDescription="@string/help_button_description"
                 app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
                 app:layout_constraintTop_toTopOf="@+id/guideline_horizontal" />
 
@@ -116,7 +115,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/search_button_on_calendar" />
 
             <TextView
-                android:id="@+id/add_still_button"
+                android:id="@+id/favorite_to_main_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -139,28 +138,21 @@
 
 
             <TextView
-
                 android:id="@+id/calendar_result_text"
-
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-
                 android:layout_marginBottom="32dp"
-
                 android:background="@color/dark_blue"
-
                 android:fontFamily="@font/mont_regular"
                 android:padding="10dp"
-
                 android:lineSpacingMultiplier="1.75"
-                android:text="Описание праздника"
+                android:text="@string/holiday_description_in_calendar"
                 android:textColor="@color/white"
-
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
                 app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
-                app:layout_constraintTop_toBottomOf="@+id/add_still_button" />
+                app:layout_constraintTop_toBottomOf="@+id/favorite_to_main_button" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

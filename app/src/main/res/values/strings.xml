@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">Congratulations</string>
-    <string name="HelpButtonDescription">Кнопка - Помощь</string>
+    <string name="help_button_description">Кнопка - Помощь</string>
     <string name="found_button_text">Найти поздравление</string>
     <string name="scroll_view_text">На любой повод</string>
     <string name="today_is">Сегодня, число месяц</string>
     <string name="name_of_the_holiday">День оперативного работника уголовно-исполнительной системы</string>
     <string name="date_of_the_holiday">12\n02</string>
-    <string name="logo_description">Логотип приложения</string>
+    <string name="logo_image_description">Логотип приложения</string>
     <string name="add_holiday_button_description">Кнопка добавить праздник</string>
     <string name="found_holiday_button_description">Кнопка найти поздравление</string>
     <string name="add_holiday_heading">Добавить праздник</string>
@@ -24,6 +24,8 @@
     <string name="add_result_to_home_button">На главную</string>
     <string name="add_result_add_still_button">Добавить еще</string>
     <string name="calendar_text_view_counter">1/25</string>
+    <string name="add_more_description_button">add more</string>
+    <string name="holiday_description_in_calendar">Описание праздника</string>
 
     <string-array name="genders">
         <item>Не важно</item>

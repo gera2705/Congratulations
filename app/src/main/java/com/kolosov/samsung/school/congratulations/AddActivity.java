@@ -37,7 +37,7 @@ public class AddActivity extends AppCompatActivity {
         congName = findViewById(R.id.congratulation_name);
         congDescription = findViewById(R.id.congratulation_description);
 
-        addButton = findViewById(R.id.add_still_button);
+        addButton = findViewById(R.id.favorite_to_main_button);
 
         addButton.setOnClickListener(v -> {
 
@@ -45,7 +45,6 @@ public class AddActivity extends AppCompatActivity {
                 Toast.makeText(this, "Заполните все поля!", Toast.LENGTH_SHORT).show();
             } else{
                 try {
-
 
                     Congratulation congratulation = new Congratulation();
                     congratulation.name = congName.getText().toString();

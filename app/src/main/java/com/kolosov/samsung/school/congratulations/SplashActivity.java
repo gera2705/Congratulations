@@ -2,10 +2,12 @@ package com.kolosov.samsung.school.congratulations;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.kolosov.samsung.school.congratulations.DataBase.CongratulationDataBase;
 
 
 public class SplashActivity extends AppCompatActivity {
@@ -13,10 +15,14 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+      CongratulationDataBase.getDbInstance(this.getApplicationContext());
 
-        Intent intent = new Intent(this, HomeActivity.class);
-        startActivity(intent);
-        finish();
+
+      Log.d("Splash" , "if");
+      Intent intent = new Intent(this, HomeActivity.class);
+      startActivity(intent);
+      finish();
+
     }
 
     //    @Override

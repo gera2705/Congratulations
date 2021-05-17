@@ -46,7 +46,7 @@
         android:background="@drawable/ic_question"
         app:layout_constraintTop_toTopOf="@+id/guideline_horizontal"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
-        android:contentDescription="@string/HelpButtonDescription" />
+        android:contentDescription="@string/help_button_description" />
 
     <TextView
         android:fontFamily="@font/georgia_bold"
@@ -177,7 +177,7 @@
         app:layout_constraintTop_toBottomOf="@+id/text_view_4" />
 
     <Button
-        android:id="@+id/add_still_button"
+        android:id="@+id/favorite_to_main_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"

@@ -1,7 +1,9 @@
 package com.kolosov.samsung.school.congratulations.DataBase;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteException;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -14,6 +16,7 @@ import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
 
@@ -27,106 +30,61 @@ public abstract class CongratulationDataBase extends RoomDatabase {
     public static CongratulationDataBase getDbInstance(Context context){
 
         if(INSTANCE == null){
+            Log.d("DBcreate" , "create");
             INSTANCE = Room.databaseBuilder(context.getApplicationContext() , CongratulationDataBase.class , "CONGRATULATIONS_BD")
                     .addCallback(new Callback() {
                         @Override
                         public void onCreate(@NonNull SupportSQLiteDatabase db) {
                             super.onCreate(db);
-                            Executors.newSingleThreadExecutor().execute(new Runnable() {
-                                @RequiresApi(api = Build.VERSION_CODES.O)
-                                @Override
-                                public void run() {
+                            Executors.newSingleThreadExecutor().execute(() -> {
 
+                                String json = "";
+                                try {
 
-                                    String json = "";
-                                    try {
-//                                        InputStream is = getAssets()
-                                        InputStream is = context.getAssets().open("testCong.json");
-                                        int size = is.available();
-                                        byte[] buffer = new byte[size];
-                                        is.read(buffer);
-                                        is.close();
-                                        json = new String(buffer, "UTF-8");
-                                    } catch (IOException ex) {
-                                        ex.printStackTrace();
+                                    InputStream is = context.getAssets().open("testCong.json");
+                                    int size = is.available();
+                                    byte[] buffer = new byte[size];
+                                    is.read(buffer);
+                                    is.close();
+                                    json = new String(buffer, StandardCharsets.UTF_8);
 
-                                    }
-
-//
-//                                    StringBuilder fileData = new StringBuilder();
-//                                    try(BufferedReader br = new BufferedReader(new FileReader("testCong.json"))){
-//                                        String readLine = "";
-//                                        while((readLine = br.readLine()) != null){
-//                                            fileData.append(readLine);
-//                                        }
-//                                    }catch(IOException ex){
-//                                        ex.printStackTrace();
-//                                    }
-////
-//                                    Log.d("JSON_DATA" , fileData.toString());
-
-//                                    GsonBuilder builder = new GsonBuilder();
-//                                    Gson gson = builder.create();
-//                                    Congratulation congratulation = gson.fromJson()
-//                                    Cat murzik = gson.fromJson(jsonText, Cat.class);
-//                                    Log.i("GSON", "Имя: " + murzik.name + "\nВозраст: " + murzik.age);
-
-                                   // ArrayList<CongratulationJson> congratulations = new ArrayList<>();
-
-
-                                    Gson gson = new Gson();
-                                    CongratulationJson congratulationJson = gson.fromJson(json, CongratulationJson.class);
-
-
-                                     ArrayList<CongratulationModel> congratulations = congratulationJson.getHolidays();
-
-
-                                    for (CongratulationModel c: congratulations) {
-                                        Congratulation congratulation = new Congratulation();
-                                        congratulation.name = c.getName();
-                                        congratulation.description = c.getDescription();
-                                        congratulation.date = c.getDate();
-                                        congratulation.congratulationText = c.getText();
-                                        getDbInstance(context).congratulationDao().insertCongratulation(congratulation);
-                                    }
-//
-//                                    Congratulation congratulation = new Congratulation();
-//
-//                                    congratulation.name="День дня";
-//                                    congratulation.date= "2021.4.30";
-//                                    congratulation.description="";
-////
-//                                    congratulation.congratulationText = "С новым годом!";
-//
-//                                    getDbInstance(context).congratulationDao().insertCongratulation(congratulation);
+                                } catch (IOException ex) {
+                                    ex.printStackTrace();
 
                                 }
+
+
+                                Log.d("STASTTIME1" , "1");
+                                Gson gson = new Gson();
+                                CongratulationJson congratulationJson = gson.fromJson(json, CongratulationJson.class);
+
+
+                                 ArrayList<CongratulationModel> congratulations = congratulationJson.getHolidays();
+
+                                Log.d("ENDTTIME1" , "2");
+
+                                Log.d("STASTTIME2" , "1");
+                                for (CongratulationModel c: congratulations) {
+                                    try {
+
+                                        getDbInstance(context).congratulationDao().insertCongratulation(new Congratulation(c.getName() , c.getDate() , c.getDescription() , c.getText()));
+                                    }catch (SQLiteException e){
+                                        Log.d("DBex" ,  c.getName());
+                                    }
+                                }
+                                Log.d("ENDTTIME2" , "2");
+
                             });
+
                         }
                     })
                     .allowMainThreadQueries()
                     .build();
+
         }
         return INSTANCE;
 
     }
 
-
-//    public String readJSONFromAsset() {
-//        String json = "";
-//        try {
-//            InputStream is = getAssets()
-////            InputStream is = getAssets().open("yourFile.json");
-//            int size = is.available();
-//            byte[] buffer = new byte[size];
-//            is.read(buffer);
-//            is.close();
-//            json = new String(buffer, "UTF-8");
-//        } catch (IOException ex) {
-//            ex.printStackTrace();
-//            return null;
-//        }
-//        return json;
-//    }
 
 }

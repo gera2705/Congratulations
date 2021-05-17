@@ -47,7 +47,7 @@
         android:background="@drawable/ic_question"
         app:layout_constraintTop_toTopOf="@+id/guideline_horizontal"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
-        android:contentDescription="@string/HelpButtonDescription" />
+        android:contentDescription="@string/help_button_description" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
@@ -94,27 +94,27 @@
         android:gravity="center"
         android:text="Ваш календарь праздников обновлён.\nТеперь вы можете проверить его или\nдобавить ещё парочку событий"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/to_main_button"
+        app:layout_constraintBottom_toTopOf="@+id/favorite_found_button"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
 
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical" />
 
     <Button
 
-        android:id="@+id/to_main_button"
+        android:id="@+id/favorite_found_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:background="@drawable/custom_orange_button_found"
         android:text="На главную"
         android:textAllCaps="false"
-        app:layout_constraintBottom_toTopOf="@+id/add_still_button"
+        app:layout_constraintBottom_toTopOf="@+id/favorite_to_main_button"
 
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical" />
 
     <Button
-        android:id="@+id/add_still_button"
+        android:id="@+id/favorite_to_main_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"

@@ -47,7 +47,7 @@
         android:background="@drawable/ic_question"
         app:layout_constraintTop_toTopOf="@+id/guideline_horizontal"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
-        android:contentDescription="@string/HelpButtonDescription" />
+        android:contentDescription="@string/help_button_description" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
