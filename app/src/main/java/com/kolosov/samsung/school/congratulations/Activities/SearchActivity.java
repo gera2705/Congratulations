@@ -1,6 +1,5 @@
-package com.kolosov.samsung.school.congratulations;
+package com.kolosov.samsung.school.congratulations.Activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
@@ -11,8 +10,6 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +19,8 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kolosov.samsung.school.congratulations.DataBase.CongratulationDataBase;
+import com.kolosov.samsung.school.congratulations.Utils.MyAsyncTask;
+import com.kolosov.samsung.school.congratulations.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,17 +58,10 @@ public class SearchActivity extends AppCompatActivity {
 
         CongratulationDataBase db = CongratulationDataBase.getDbInstance(this.getApplicationContext());
 
-      //  if(holidaysNames == null ) {
+        holidaysNames = new ArrayList<>();
 
+        holidaysNames = new MyAsyncTask().doInBackground(this.getApplicationContext());
 
-
-            holidaysNames = new ArrayList<>();
-
-            holidaysNames = new MyAsyncTask().doInBackground(this.getApplicationContext());
-            //holidaysNames = db.congratulationDao().getAllNames();
-       // }
-
-       // holidaysNames = CongratulationDataBase.getNames();
 
         Log.d("NamesSize" , String.valueOf(holidaysNames.size()));
 
@@ -112,30 +104,27 @@ public class SearchActivity extends AppCompatActivity {
         MenuItem menuItem = menu.getItem(1);
         menuItem.setChecked(true);
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()){
 
 
-                    case R.id.home:
-                        Intent intent = new Intent(SearchActivity.this , HomeActivity.class);
-                        startActivity(intent);
-                        break;
+                case R.id.home:
+                    Intent intent = new Intent(SearchActivity.this , HomeActivity.class);
+                    startActivity(intent);
+                    break;
 
 
-                    case R.id.calendar:
-                        Intent intent1 = new Intent(SearchActivity.this , CalendarActivity.class);
-                        startActivity(intent1);
-                        break;
-                    case R.id.favorite:
-                        Intent intent2 = new Intent(SearchActivity.this , FavoriteActivity.class);
-                        startActivity(intent2);
-                        break;
-                }
-
-                return false;
+                case R.id.calendar:
+                    Intent intent1 = new Intent(SearchActivity.this , CalendarActivity.class);
+                    startActivity(intent1);
+                    break;
+                case R.id.favorite:
+                    Intent intent2 = new Intent(SearchActivity.this , FavoriteActivity.class);
+                    startActivity(intent2);
+                    break;
             }
+
+            return false;
         });
     }
 
@@ -178,13 +167,10 @@ public class SearchActivity extends AppCompatActivity {
                 }
             });
 
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    genderTextView.setText(adapter.getItem(position));
-                    genderTextView.setTextColor(getResources().getColor(R.color.dark_blue , null));
-                    dialog.dismiss();
-                }
+            listView.setOnItemClickListener((parent, view, position, id) -> {
+                genderTextView.setText(adapter.getItem(position));
+                genderTextView.setTextColor(getResources().getColor(R.color.dark_blue , null));
+                dialog.dismiss();
             });
 
         });
@@ -197,12 +183,7 @@ public class SearchActivity extends AppCompatActivity {
 
             dialog.setContentView(R.layout.dialog_search_spinner);
 
-
-
             dialog.getWindow().setLayout(1000 , 1200);
-
-//                Rect displayRectangle = new Rect();
-//                dialog.getWindow().setLayout((int) ( displayRectangle.width() * 0.5f) , (int) ( displayRectangle.height() * 0.5f));
 
             dialog.show();
 

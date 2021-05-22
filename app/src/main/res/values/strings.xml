@@ -27,6 +27,10 @@
     <string name="add_more_description_button">add more</string>
     <string name="holiday_description_in_calendar">Описание праздника</string>
 
+    <string name="found">Найдено: </string>
+    <string name="slash">/</string>
+    <string name="exclamation_mark_and_line_break">!\n</string>
+
     <string-array name="genders">
         <item>Не важно</item>
         <item>Мужской</item>

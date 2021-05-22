@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/home_bg"
-    tools:context=".HomeActivity">
+    tools:context=".Activities.HomeActivity">
 
     <ScrollView
         android:id="@+id/main_scroll"
@@ -61,7 +61,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/main_card"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="320dp"
                 android:layout_marginTop="4dp"
                 android:background="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -90,7 +90,7 @@
                     android:fontFamily="@font/mont_semi_bold"
                     android:text="@string/today_is"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="26sp"
                     app:layout_constraintStart_toEndOf="@+id/guideline_vertical_main_card"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -101,10 +101,10 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="24dp"
                     android:fontFamily="@font/georgia_bold"
-                    android:maxWidth="250dp"
+                    android:maxWidth="550dp"
                     android:text="@string/name_of_the_holiday"
                     android:textColor="@color/dark_blue"
-                    android:textSize="24sp"
+                    android:textSize="36sp"
                     app:layout_constraintBottom_toTopOf="@+id/home_black_found_button"
                     app:layout_constraintStart_toEndOf="@+id/guideline_vertical_main_card"
                     app:layout_constraintTop_toBottomOf="@+id/date" />
@@ -116,11 +116,11 @@
                     android:fontFamily="@font/bodoni_bd_bold"
                     android:gravity="end"
                     android:lineSpacingMultiplier="0.75"
+                    android:paddingRight="-15dp"
                     android:text="@string/date_of_the_holiday"
                     android:textColor="@color/pink"
-                    android:textSize="100sp"
+                    android:textSize="140sp"
                     android:textStyle="bold"
-                    android:paddingRight="-15dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -138,7 +138,7 @@
                     android:text="@string/found_button_text"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
+                    android:textSize="21sp"
                     android:textStyle="normal"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end_main_card"
@@ -148,12 +148,12 @@
 
             <ImageButton
                 android:id="@+id/left_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_width="256dp"
+                android:layout_height="256dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="8dp"
-                android:background="@drawable/left_and_right_button_selector"
-                android:src="@drawable/ic_left_button_bg"
+                android:background="@drawable/ic_left_button_bg"
+
                 android:contentDescription="@string/found_holiday_button_description"
                 app:layout_constraintEnd_toStartOf="@+id/right_button"
                 app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
@@ -161,17 +161,16 @@
 
             <ImageButton
                 android:id="@+id/right_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="256dp"
+                android:layout_height="256dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/left_and_right_button_selector"
-                android:src="@drawable/ic_right_button_bg"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/ic_right_button_bg"
+
+                android:contentDescription="@string/add_holiday_button_description"
                 app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
                 app:layout_constraintStart_toEndOf="@+id/left_button"
-                app:layout_constraintTop_toBottomOf="@+id/main_card"
-                android:contentDescription="@string/add_holiday_button_description"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/main_card" />
 
             <TextView
                 android:id="@+id/textView"
@@ -180,7 +179,7 @@
                 android:layout_marginTop="32dp"
                 android:text="@string/scroll_view_text"
                 android:textColor="@color/white"
-                android:textSize="26sp"
+                android:textSize="32sp"
                 app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
                 app:layout_constraintTop_toBottomOf="@+id/left_button" />
 
@@ -217,8 +216,8 @@
 
                             android:textAllCaps="false"
 
-                            android:layout_width="135dp"
-                            android:layout_height="145dp"
+                            android:layout_width="235dp"
+                            android:layout_height="245dp"
                             android:layout_marginStart="24dp"
                             android:layout_marginEnd="10dp"
 
@@ -239,8 +238,8 @@
                             android:textSize="16sp"
                             android:text="Годовщина свадьбы"
                             style="?android:attr/borderlessButtonStyle"
-                            android:layout_width="135dp"
-                            android:layout_height="145dp"
+                            android:layout_width="235dp"
+                            android:layout_height="245dp"
                             android:layout_marginEnd="10dp"
                             android:layout_gravity="left"
                             android:gravity="left|top"
@@ -257,8 +256,8 @@
 
                             android:textSize="16sp"
                             android:text="Рождение ребенка"
-                            android:layout_width="135dp"
-                            android:layout_height="145dp"
+                            android:layout_width="235dp"
+                            android:layout_height="245dp"
                             android:layout_marginEnd="10dp"
                             android:layout_gravity="left"
                             android:gravity="left|top"
@@ -277,8 +276,8 @@
                             android:textSize="16sp"
                             android:text="День учителя"
                             style="?android:attr/borderlessButtonStyle"
-                            android:layout_width="135dp"
-                            android:layout_height="145dp"
+                            android:layout_width="235dp"
+                            android:layout_height="245dp"
                             android:layout_marginEnd="24dp"
                             android:layout_gravity="left"
                             android:gravity="left|top"

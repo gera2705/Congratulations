@@ -1,4 +1,4 @@
-package com.kolosov.samsung.school.congratulations;
+package com.kolosov.samsung.school.congratulations.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,16 +10,15 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kolosov.samsung.school.congratulations.DataBase.Congratulation;
 import com.kolosov.samsung.school.congratulations.DataBase.CongratulationDataBase;
+import com.kolosov.samsung.school.congratulations.R;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -78,18 +77,13 @@ public class CalendarActivity extends AppCompatActivity {
 
         countDescriptionTextView.setText(currentDatesNumber + "/" + description.size());
 
-
         setResultText(congratulationsOnDate , description);
 
 
-        searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CalendarActivity.this, SearchActivity.class);
-                intent.putExtra("holidayName", congratulationsOnDate.get(currentDatesNumber-1).name);
-                //Toast.makeText(CalendarActivity.this, congratulationsOnDate.get(currentDatesNumber-1).name , Toast.LENGTH_SHORT).show();
-                startActivity(intent);
-            }
+        searchButton.setOnClickListener(v -> {
+            Intent intent = new Intent(CalendarActivity.this, SearchActivity.class);
+            intent.putExtra("holidayName", congratulationsOnDate.get(currentDatesNumber-1).name);
+            startActivity(intent);
         });
 
         forwardImageButton.setOnClickListener(v -> {
@@ -99,7 +93,6 @@ public class CalendarActivity extends AppCompatActivity {
             }
 
             setResultText(congratulationsOnDate , description);
-            //resultText.setText(congratulationsOnDate.get(currentDatesNumber - 1).name + "\n" + description.get(currentDatesNumber - 1));
 
             countDescriptionTextView.setText(currentDatesNumber + "/" + description.size());
 
@@ -113,7 +106,6 @@ public class CalendarActivity extends AppCompatActivity {
             }
 
             setResultText(congratulationsOnDate , description);
-            //resultText.setText(congratulationsOnDate.get(currentDatesNumber - 1).name + "\n" +description.get(currentDatesNumber - 1));
 
             countDescriptionTextView.setText(currentDatesNumber + "/" + description.size());
         });
@@ -143,48 +135,34 @@ public class CalendarActivity extends AppCompatActivity {
 
                 setResultText(congratulationsOnDate1 , description1);
 
-//                resultText.setText(congratulationsOnDate.get(currentDatesNumber - 1).name + "\n" + description1.get(0));
-//                resultText.setTextColor(getResources().getColor(R.color.primary_2));
 
-                forwardImageButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                forwardImageButton.setOnClickListener(v -> {
 
-                        if (currentDatesNumber != description1.size()) {
-                            currentDatesNumber++;
-                        }
-                        setResultText(congratulationsOnDate1 , description1);
-                       // resultText.setText(congratulationsOnDate.get(currentDatesNumber - 1).name + "\n" + description1.get(currentDatesNumber - 1));
-
-                        countDescriptionTextView.setText(currentDatesNumber + "/" + description1.size());
-
-
+                    if (currentDatesNumber != description1.size()) {
+                        currentDatesNumber++;
                     }
+                    setResultText(congratulationsOnDate1 , description1);
+
+                    countDescriptionTextView.setText(currentDatesNumber + "/" + description1.size());
+
+
                 });
 
-                backImageButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                backImageButton.setOnClickListener(v -> {
 
-                        if (currentDatesNumber > 1) {
-                            currentDatesNumber--;
-                        }
-
-                        setResultText(congratulationsOnDate1 , description1);
-//                        resultText.setText(congratulationsOnDate.get(currentDatesNumber - 1).name + "\n" + description1.get(currentDatesNumber - 1));
-
-                        countDescriptionTextView.setText(currentDatesNumber + "/" + description1.size());
+                    if (currentDatesNumber > 1) {
+                        currentDatesNumber--;
                     }
+
+                    setResultText(congratulationsOnDate1 , description1);
+
+                    countDescriptionTextView.setText(currentDatesNumber + "/" + description1.size());
                 });
 
-                searchButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(CalendarActivity.this, SearchActivity.class);
-                        intent.putExtra("holidayName", congratulationsOnDate1.get(currentDatesNumber-1).name);
-                       // Toast.makeText(CalendarActivity.this, congratulationsOnDate1.get(currentDatesNumber-1).name , Toast.LENGTH_SHORT).show();
-                         startActivity(intent);
-                    }
+                searchButton.setOnClickListener(v -> {
+                    Intent intent = new Intent(CalendarActivity.this, SearchActivity.class);
+                    intent.putExtra("holidayName", congratulationsOnDate1.get(currentDatesNumber-1).name);
+                     startActivity(intent);
                 });
 
 

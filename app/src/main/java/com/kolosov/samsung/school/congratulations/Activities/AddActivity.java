@@ -1,4 +1,4 @@
-package com.kolosov.samsung.school.congratulations;
+package com.kolosov.samsung.school.congratulations.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kolosov.samsung.school.congratulations.DataBase.Congratulation;
 import com.kolosov.samsung.school.congratulations.DataBase.CongratulationDataBase;
+import com.kolosov.samsung.school.congratulations.R;
 
 import java.util.Calendar;
 

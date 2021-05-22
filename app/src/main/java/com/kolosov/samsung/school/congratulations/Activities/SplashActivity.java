@@ -1,4 +1,4 @@
-package com.kolosov.samsung.school.congratulations;
+package com.kolosov.samsung.school.congratulations.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;

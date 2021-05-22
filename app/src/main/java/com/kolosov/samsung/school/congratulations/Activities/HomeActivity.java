@@ -1,29 +1,24 @@
-package com.kolosov.samsung.school.congratulations;
+package com.kolosov.samsung.school.congratulations.Activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kolosov.samsung.school.congratulations.DataBase.Congratulation;
 import com.kolosov.samsung.school.congratulations.DataBase.CongratulationDataBase;
+import com.kolosov.samsung.school.congratulations.R;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -74,64 +69,46 @@ public class HomeActivity extends AppCompatActivity {
             name.setText("Сегодня нет никакого праздника!\nДобавьте свой!");
         }
 
-        smallButton1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
-                intent.putExtra("holidayName", smallButton1.getText());
-                startActivity(intent);
-            }
+        smallButton1.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
+            intent.putExtra("holidayName", smallButton1.getText());
+            startActivity(intent);
         });
 
-        smallButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        smallButton2.setOnClickListener(v -> {
 
-                Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
-                intent.putExtra("holidayName", smallButton2.getText());
-                startActivity(intent);
-            }
+            Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
+            intent.putExtra("holidayName", smallButton2.getText());
+            startActivity(intent);
         });
 
-        smallButton3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        smallButton3.setOnClickListener(v -> {
 
-                Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
-                intent.putExtra("holidayName", smallButton3.getText());
-                startActivity(intent);
-            }
+            Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
+            intent.putExtra("holidayName", smallButton3.getText());
+            startActivity(intent);
         });
 
-        smallButton4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        smallButton4.setOnClickListener(v -> {
 
-                Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
-                intent.putExtra("holidayName", smallButton4.getText());
-                startActivity(intent);
-            }
+            Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
+            intent.putExtra("holidayName", smallButton4.getText());
+            startActivity(intent);
         });
 
 
-        foundBlackButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
-                intent.putExtra("holidayName", name.getText());
-                startActivity(intent);
+        foundBlackButton.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
+            intent.putExtra("holidayName", name.getText());
+            startActivity(intent);
 
-            }
         });
 
         foundButton = findViewById(R.id.left_button);
 
-        foundButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
-                startActivity(intent);
-            }
+        foundButton.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
+            startActivity(intent);
         });
 
 
@@ -146,23 +123,9 @@ public class HomeActivity extends AppCompatActivity {
 
         loadMenu();
 
-
-
-
-//        String[] dateArray = currentDate.split("\\.");
-//        date.setText("Сегодня, " + dateArray[2] + " " + getMonth(Integer.parseInt(dateArray[1])));
-//        bigDateTextView.setText(dateArray[2] + "\n" + dateArray[1]);
-
-
-
         String[] dateArray = currentDate.split("/");
 
         showDate(dateArray);
-
-        //String date = dateArray[2] + "." + dateArray[1] + "." + dateArray[0];
-
-
-
 
     }
 
@@ -194,30 +157,27 @@ public class HomeActivity extends AppCompatActivity {
         MenuItem menuItem = menu.getItem(0);
         menuItem.setChecked(true);
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()){
 
 
-                    case R.id.search:
-                        Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
-                        startActivity(intent);
-                        break;
+                case R.id.search:
+                    Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
+                    startActivity(intent);
+                    break;
 
 
-                    case R.id.calendar:
-                        Intent intent1 = new Intent(HomeActivity.this , CalendarActivity.class);
-                        startActivity(intent1);
-                        break;
-                    case R.id.favorite:
-                        Intent intent2 = new Intent(HomeActivity.this , FavoriteActivity.class);
-                        startActivity(intent2);
-                        break;
-                }
-
-                return false;
+                case R.id.calendar:
+                    Intent intent1 = new Intent(HomeActivity.this , CalendarActivity.class);
+                    startActivity(intent1);
+                    break;
+                case R.id.favorite:
+                    Intent intent2 = new Intent(HomeActivity.this , FavoriteActivity.class);
+                    startActivity(intent2);
+                    break;
             }
+
+            return false;
         });
     }
 
