@@ -34,9 +34,9 @@ public class SearchResultActivity extends AppCompatActivity {
 
     private ImageButton backImageButton;
 
-    Button copyButton;
+    private Button copyButton;
 
-    Button shareButton;
+    private Button shareButton;
 
     private static int currentCongratulationNumber;
 

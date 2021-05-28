@@ -30,6 +30,10 @@
     <string name="found">Найдено: </string>
     <string name="slash">/</string>
     <string name="exclamation_mark_and_line_break">!\n</string>
+    <string name="menu_title_home">Главная</string>
+    <string name="menu_title_search">Поиск</string>
+    <string name="menu_title_calendar">Календарь</string>
+    <string name="menu_title_favorite">Избранное</string>
 
     <string-array name="genders">
         <item>Не важно</item>

@@ -211,8 +211,8 @@
                             android:id="@+id/small_button_1"
                             android:fontFamily="@font/mont_semi_bold"
 
-                            android:textSize="16sp"
-                            android:text="День Рождения"
+                            android:textSize="24sp"
+                            android:text="День\nРождения"
 
                             android:textAllCaps="false"
 
@@ -224,9 +224,9 @@
 
                             android:layout_gravity="left"
                             android:gravity="left|top"
-                            android:padding="18dp"
+                            android:padding="36dp"
 
-                            android:background="@drawable/small_card_button_1"
+                            android:background="@drawable/big_card_button_1"
                             />
 
                         <Button
@@ -235,7 +235,7 @@
 
                             android:fontFamily="@font/mont_semi_bold"
 
-                            android:textSize="16sp"
+                            android:textSize="24sp"
                             android:text="Годовщина свадьбы"
                             style="?android:attr/borderlessButtonStyle"
                             android:layout_width="235dp"
@@ -243,8 +243,8 @@
                             android:layout_marginEnd="10dp"
                             android:layout_gravity="left"
                             android:gravity="left|top"
-                            android:padding="18dp"
-                            android:background="@drawable/small_card_button_2"
+                            android:padding="36dp"
+                            android:background="@drawable/big_card_button_2"
                             />
 
                         <Button
@@ -254,15 +254,15 @@
 
                             android:fontFamily="@font/mont_semi_bold"
 
-                            android:textSize="16sp"
+                            android:textSize="24sp"
                             android:text="Рождение ребенка"
                             android:layout_width="235dp"
                             android:layout_height="245dp"
                             android:layout_marginEnd="10dp"
                             android:layout_gravity="left"
                             android:gravity="left|top"
-                            android:padding="18dp"
-                            android:background="@drawable/small_card_button_3"
+                            android:padding="36dp"
+                            android:background="@drawable/big_card_button_3"
 
 
                             />
@@ -273,7 +273,7 @@
 
                             android:fontFamily="@font/mont_semi_bold"
 
-                            android:textSize="16sp"
+                            android:textSize="24sp"
                             android:text="День учителя"
                             style="?android:attr/borderlessButtonStyle"
                             android:layout_width="235dp"
@@ -281,7 +281,7 @@
                             android:layout_marginEnd="24dp"
                             android:layout_gravity="left"
                             android:gravity="left|top"
-                            android:padding="18dp"
+                            android:padding="36dp"
                             android:background="@drawable/small_card_button_4"
                             />
 

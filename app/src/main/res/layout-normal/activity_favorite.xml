@@ -50,6 +50,7 @@
 
 
     <TextView
+
         android:id="@+id/found_text"
         android:fontFamily="@font/georgia_bold"
         android:layout_width="wrap_content"
@@ -79,6 +80,7 @@
         app:layout_constraintTop_toBottomOf="@+id/found_text" />
 
     <ImageButton
+        android:visibility="invisible"
         android:id="@+id/stylus_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -92,6 +94,7 @@
         app:layout_constraintTop_toBottomOf="@id/favorite_description_text_view" />
 
     <TextView
+        android:visibility="invisible"
         android:id="@+id/favorite_description_text_view_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -107,6 +110,7 @@
 
 
     <Button
+        android:visibility="invisible"
         android:id="@+id/favorite_found_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -119,6 +123,7 @@
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical" />
 
     <Button
+        android:visibility="invisible"
         android:id="@+id/favorite_to_main_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -144,5 +149,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         />
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
