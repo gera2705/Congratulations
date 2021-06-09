@@ -108,12 +108,12 @@
         android:text="@string/add_result_to_home_button"
         android:textAllCaps="false"
         android:textSize="21sp"
-        app:layout_constraintBottom_toTopOf="@+id/favorite_to_main_button"
+        app:layout_constraintBottom_toTopOf="@+id/result_counter"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical" />
 
     <Button
-        android:id="@+id/favorite_to_main_button"
+        android:id="@+id/result_counter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"

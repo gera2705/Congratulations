@@ -24,7 +24,7 @@ public class AddResultActivity extends AppCompatActivity {
 
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
         toHomeButton = findViewById(R.id.favorite_found_button);
-        addStillButton = findViewById(R.id.favorite_to_main_button);
+        addStillButton = findViewById(R.id.result_counter);
         stylusButton = findViewById(R.id.stylus_button);
 
         toHomeButton.setOnClickListener(v -> {

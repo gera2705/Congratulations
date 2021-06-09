@@ -7,36 +7,32 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.gson.Gson;
 import com.kolosov.samsung.school.congratulations.DataBase.Congratulation;
 import com.kolosov.samsung.school.congratulations.DataBase.CongratulationDataBase;
 import com.kolosov.samsung.school.congratulations.R;
+
+import java.util.ArrayList;
 
 public class SearchResultActivity extends AppCompatActivity {
 
     private TextView congratulation;
     private BottomNavigationView bottomNavigationView;
 
-    private TextView smallCounterTextView;
     private TextView countTextView;
-
-    private Button forwardArrowImageButton;
-    private Button backArrowImageButton;
-
-    private ImageButton backImageButton;
-
-    private Button copyButton;
-
-    private Button shareButton;
+    private Button favoriteButton;
 
     private static int currentCongratulationNumber;
 
@@ -47,14 +43,15 @@ public class SearchResultActivity extends AppCompatActivity {
 
         //initialization
         congratulation = findViewById(R.id.congratulation_text);
-        smallCounterTextView = findViewById(R.id.small_count_text_view);
+        TextView smallCounterTextView = findViewById(R.id.small_count_text_view);
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
-        copyButton = findViewById(R.id.button_copy);
-        shareButton = findViewById(R.id.button_share);
-        forwardArrowImageButton = findViewById(R.id.forward_arrow_image_button);
-        backArrowImageButton = findViewById(R.id.back_arrow_image_button);
-        countTextView = findViewById(R.id.favorite_to_main_button);
-        backImageButton = findViewById(R.id.back_button);
+        Button copyButton = findViewById(R.id.button_copy);
+        Button shareButton = findViewById(R.id.button_share);
+        favoriteButton = findViewById(R.id.favorite_button);
+        Button forwardArrowImageButton = findViewById(R.id.forward_arrow_image_button);
+        Button backArrowImageButton = findViewById(R.id.back_arrow_image_button);
+        countTextView = findViewById(R.id.result_counter);
+        ImageButton backImageButton = findViewById(R.id.back_button);
         currentCongratulationNumber = 1;
         //initialization
 
@@ -80,6 +77,20 @@ public class SearchResultActivity extends AppCompatActivity {
 
 
         loadMenu();
+
+        favoriteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(FavoriteActivity.getFavorites() == null) {
+                    FavoriteActivity.setFavorites(new ArrayList<>());
+                }
+                FavoriteActivity.getFavorites().add(congratulation.getText().toString());
+                save();
+
+                Toast.makeText(SearchResultActivity.this ,"Поздравление добавлено в избранное!",Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
 
         forwardArrowImageButton.setOnClickListener(v -> {
@@ -127,6 +138,17 @@ public class SearchResultActivity extends AppCompatActivity {
 
         });
 
+
+    }
+
+    private void save() {
+
+        SharedPreferences sharedPreferences = getSharedPreferences("pr" , MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(FavoriteActivity.getFavorites());
+        editor.putString("list" , json);
+        editor.apply();
 
     }
 

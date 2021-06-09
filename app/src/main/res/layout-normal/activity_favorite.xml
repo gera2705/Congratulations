@@ -79,6 +79,19 @@
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
         app:layout_constraintTop_toBottomOf="@+id/found_text" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycle_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/favorite_description_text_view">
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
     <ImageButton
         android:visibility="invisible"
         android:id="@+id/stylus_button"
@@ -118,13 +131,13 @@
         android:background="@drawable/custom_orange_button_found"
         android:text="Найти поздравление"
         android:textAllCaps="false"
-        app:layout_constraintBottom_toTopOf="@+id/favorite_to_main_button"
+        app:layout_constraintBottom_toTopOf="@+id/result_counter"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical" />
 
     <Button
         android:visibility="invisible"
-        android:id="@+id/favorite_to_main_button"
+        android:id="@+id/result_counter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"

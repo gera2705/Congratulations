@@ -30,7 +30,6 @@ import java.util.Locale;
 public class CalendarActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
-    private CalendarView calendarView;
     private TextView resultText;
 
     private TextView countDescriptionTextView;
@@ -49,11 +48,11 @@ public class CalendarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calendar);
 
         //initialization
-        countDescriptionTextView = findViewById(R.id.favorite_to_main_button);
+        countDescriptionTextView = findViewById(R.id.result_counter);
         backImageButton = findViewById(R.id.back_description_arrow_image_button);
         forwardImageButton = findViewById(R.id.forward_description_arrow_image_button);
         resultText = findViewById(R.id.calendar_result_text);
-        calendarView = (CalendarView) findViewById(R.id.calendar);
+        CalendarView calendarView = (CalendarView) findViewById(R.id.calendar);
         searchButton = findViewById(R.id.search_button_on_calendar);
         currentDatesNumber = 1;
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);

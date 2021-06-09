@@ -38,7 +38,7 @@ public class AddActivity extends AppCompatActivity {
         congName = findViewById(R.id.congratulation_name);
         congDescription = findViewById(R.id.congratulation_description);
 
-        addButton = findViewById(R.id.favorite_to_main_button);
+        addButton = findViewById(R.id.result_counter);
 
         addButton.setOnClickListener(v -> {
 

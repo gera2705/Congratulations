@@ -104,7 +104,7 @@
 
 
     <TextView
-        android:id="@+id/favorite_to_main_button"
+        android:id="@+id/result_counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -136,7 +136,7 @@
 
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
-        app:layout_constraintStart_toEndOf="@+id/favorite_to_main_button"
+        app:layout_constraintStart_toEndOf="@+id/result_counter"
         app:layout_constraintTop_toBottomOf="@+id/favorite_button" />
 
     <Button
@@ -147,7 +147,7 @@
 
         android:background="@drawable/ic_left_arrow"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
-        app:layout_constraintEnd_toStartOf="@+id/favorite_to_main_button"
+        app:layout_constraintEnd_toStartOf="@+id/result_counter"
         app:layout_constraintStart_toStartOf="@+id/guideline_vertical"
         app:layout_constraintTop_toBottomOf="@+id/button_share" />
 
@@ -159,7 +159,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginBottom="16dp"
 
-        app:layout_constraintBottom_toTopOf="@+id/favorite_to_main_button"
+        app:layout_constraintBottom_toTopOf="@+id/result_counter"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical" />
 
     <Button
@@ -169,7 +169,7 @@
         android:layout_height="64dp"
         android:layout_marginBottom="16dp"
 
-        app:layout_constraintBottom_toTopOf="@+id/favorite_to_main_button"
+        app:layout_constraintBottom_toTopOf="@+id/result_counter"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
 
@@ -184,7 +184,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/ic_favorite"
-        app:layout_constraintBottom_toTopOf="@+id/favorite_to_main_button"
+        app:layout_constraintBottom_toTopOf="@+id/result_counter"
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end" />
 
 

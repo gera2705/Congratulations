@@ -43,7 +43,7 @@ public class SearchActivity extends AppCompatActivity {
 
         holidayNameTextView = findViewById(R.id.holiday_name_text_view);
         genderTextView = findViewById(R.id.gender);
-        search = findViewById(R.id.favorite_to_main_button);
+        search = findViewById(R.id.result_counter);
         humanTextView = findViewById(R.id.human_name);
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
 
