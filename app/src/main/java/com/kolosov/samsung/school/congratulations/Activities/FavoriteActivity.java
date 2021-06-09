@@ -34,8 +34,8 @@ public class FavoriteActivity extends AppCompatActivity {
 
 
     private RecyclerView recyclerView;
-    LinearLayoutManager layoutManager;
-    RecyclerViewAdapter recyclerViewAdapter;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     public static void setFavorites(ArrayList<String> favorites) {
         FavoriteActivity.favorites = favorites;
@@ -51,6 +51,7 @@ public class FavoriteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite);
+
 
 
 
@@ -126,6 +127,14 @@ public class FavoriteActivity extends AppCompatActivity {
             favoriteToMainButton.setVisibility(View.VISIBLE);
             favoriteFoundButton.setVisibility(View.VISIBLE);
 
+        }else {
+            recyclerView = findViewById(R.id.recycle_view);
+            recyclerView.setHasFixedSize(true);
+            layoutManager = new LinearLayoutManager(this);
+            adapter = new RecyclerViewAdapter( favorites , FavoriteActivity.this);
+
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setAdapter(adapter);
         }
 
     }

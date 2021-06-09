@@ -88,6 +88,7 @@ public class SearchActivity extends AppCompatActivity {
             }else {
 
                 Intent intent = new Intent(SearchActivity.this, SearchResultActivity.class);
+                intent.putExtra("flag" , "2");
                 intent.putExtra("holidayName", holidayNameTextView.getText());
                 intent.putExtra("humanName" , humanTextView.getText());
                 startActivity(intent);

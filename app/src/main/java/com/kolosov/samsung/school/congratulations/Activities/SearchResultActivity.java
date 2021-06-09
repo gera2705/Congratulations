@@ -56,64 +56,79 @@ public class SearchResultActivity extends AppCompatActivity {
         //initialization
 
         Bundle arguments = getIntent().getExtras();
-        String holidayName = arguments.get("holidayName").toString();
-        String humanName = arguments.get("humanName").toString();
 
-        CongratulationDataBase db = CongratulationDataBase.getDbInstance(this.getApplicationContext());
+        int flag =  Integer.parseInt(arguments.get("flag").toString());
 
-        Congratulation receivedCongratulation = db.congratulationDao().getCongratulation(holidayName);
+        if(flag == 1){
+            String holidayName = arguments.get("holidayName").toString();
+            String humanName = arguments.get("humanName").toString();
 
-        String[] strings = receivedCongratulation.congratulationText.split("\\|");
+            CongratulationDataBase db = CongratulationDataBase.getDbInstance(this.getApplicationContext());
+
+            Congratulation receivedCongratulation = db.congratulationDao().getCongratulation(holidayName);
+
+            String[] strings = receivedCongratulation.congratulationText.split("\\|");
 
 
 
-        
-        smallCounterTextView.setText("Найдено: " + strings.length);
 
-        congratulation.setText(humanName + "!\n" + strings[currentCongratulationNumber-1]);
+            smallCounterTextView.setText("Найдено: " + strings.length);
 
-        countTextView.setText( currentCongratulationNumber + "/" + strings.length);
-        congratulation.setMovementMethod(new ScrollingMovementMethod());
+            congratulation.setText(humanName + "!\n" + strings[currentCongratulationNumber-1]);
+
+            countTextView.setText( currentCongratulationNumber + "/" + strings.length);
+            congratulation.setMovementMethod(new ScrollingMovementMethod());
+
+            favoriteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(FavoriteActivity.getFavorites() == null) {
+                        FavoriteActivity.setFavorites(new ArrayList<>());
+                    }
+                    FavoriteActivity.getFavorites().add(congratulation.getText().toString());
+                    save();
+
+                    Toast.makeText(SearchResultActivity.this ,"Поздравление добавлено в избранное!",Toast.LENGTH_SHORT).show();
+
+                }
+            });
+
+
+            forwardArrowImageButton.setOnClickListener(v -> {
+
+                if(currentCongratulationNumber != strings.length) {
+                    currentCongratulationNumber++;
+                }
+                congratulation.setText(humanName + "!\n" + strings[currentCongratulationNumber - 1]);
+
+                countTextView.setText( currentCongratulationNumber + "/" + strings.length);
+            });
+
+            backArrowImageButton.setOnClickListener(v -> {
+
+                if(currentCongratulationNumber > 1) {
+                    currentCongratulationNumber--;
+                }
+
+                congratulation.setText(humanName + "!\n" + strings[currentCongratulationNumber - 1]);
+
+                countTextView.setText( currentCongratulationNumber + "/" + strings.length);
+
+            });
+
+        }else if(flag == 2){
+            String text = arguments.get("text").toString();
+
+            congratulation.setText(text);
+        }
+
+
+
 
 
         loadMenu();
 
-        favoriteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(FavoriteActivity.getFavorites() == null) {
-                    FavoriteActivity.setFavorites(new ArrayList<>());
-                }
-                FavoriteActivity.getFavorites().add(congratulation.getText().toString());
-                save();
 
-                Toast.makeText(SearchResultActivity.this ,"Поздравление добавлено в избранное!",Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-
-        forwardArrowImageButton.setOnClickListener(v -> {
-
-            if(currentCongratulationNumber != strings.length) {
-                currentCongratulationNumber++;
-            }
-            congratulation.setText(humanName + "!\n" + strings[currentCongratulationNumber - 1]);
-
-            countTextView.setText( currentCongratulationNumber + "/" + strings.length);
-        });
-
-        backArrowImageButton.setOnClickListener(v -> {
-
-            if(currentCongratulationNumber > 1) {
-                currentCongratulationNumber--;
-            }
-
-            congratulation.setText(humanName + "!\n" + strings[currentCongratulationNumber - 1]);
-
-            countTextView.setText( currentCongratulationNumber + "/" + strings.length);
-
-        });
 
         backImageButton.setOnClickListener(v -> SearchResultActivity.this.finish());
 
