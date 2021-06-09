@@ -23,10 +23,6 @@ import com.kolosov.samsung.school.congratulations.R;
 public class HomeActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
-    private ImageButton addButton;
-    private ImageButton foundButton;
-
-    private Button foundBlackButton;
 
     private TextView date;
     private TextView name;
@@ -48,6 +44,17 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        init();
+
+        loadMenu();
+
+        String[] dateArray = currentDate.split("/");
+
+        showDate(dateArray);
+
+    }
+
+    private void init(){
         CongratulationDataBase db = CongratulationDataBase.getDbInstance(this.getApplicationContext());
 
         smallButton1 = findViewById(R.id.small_button_1);
@@ -59,7 +66,9 @@ public class HomeActivity extends AppCompatActivity {
         name = findViewById(R.id.name);
         bigDateTextView = findViewById(R.id.bigDateTextView);
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
-        foundBlackButton = findViewById(R.id.home_black_found_button);
+        Button foundBlackButton = findViewById(R.id.home_black_found_button);
+        ImageButton addButton = findViewById(R.id.right_button);
+        ImageButton foundButton = findViewById(R.id.left_button);
 
         try {
 
@@ -96,7 +105,6 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-
         foundBlackButton.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
             intent.putExtra("holidayName", name.getText());
@@ -104,28 +112,15 @@ public class HomeActivity extends AppCompatActivity {
 
         });
 
-        foundButton = findViewById(R.id.left_button);
-
         foundButton.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
             startActivity(intent);
         });
 
-
-        addButton = findViewById(R.id.right_button);
-
         addButton.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this , AddActivity.class);
             startActivity(intent);
         });
-
-
-
-        loadMenu();
-
-        String[] dateArray = currentDate.split("/");
-
-        showDate(dateArray);
 
     }
 
@@ -136,8 +131,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
-
-    void showDate(String[] dateArray){
+    private void showDate(String[] dateArray){
 
         if (Integer.parseInt(dateArray[1]) < 10) {
             dateArray[1] = "0" + dateArray[1];
@@ -147,8 +141,12 @@ public class HomeActivity extends AppCompatActivity {
             dateArray[0] = "0" + dateArray[0];
         }
 
-        date.setText("Сегодня, " + dateArray[1] + " " + getMonth(Integer.parseInt(dateArray[0])));
-        bigDateTextView.setText(dateArray[1] + "\n" + dateArray[0]);
+        //date.setText("Сегодня, " + dateArray[1] + " " + getMonth(Integer.parseInt(dateArray[0])));
+        date.setText(getString(R.string.date, dateArray[1], getMonth(Integer.parseInt(dateArray[0]))));
+
+        //bigDateTextView.setText(dateArray[1] + "\n" + dateArray[0]);
+        bigDateTextView.setText(getString(R.string.big_date, dateArray[1] , dateArray[0]));
+
     }
 
     void loadMenu(){
@@ -160,12 +158,10 @@ public class HomeActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){
 
-
                 case R.id.search:
                     Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
                     startActivity(intent);
                     break;
-
 
                 case R.id.calendar:
                     Intent intent1 = new Intent(HomeActivity.this , CalendarActivity.class);

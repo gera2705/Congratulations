@@ -23,7 +23,6 @@ public class AddActivity extends AppCompatActivity {
     private TextView congName;
     private TextView congDescription;
     private BottomNavigationView bottomNavigationView;
-    private Button addButton;
 
 
     @Override
@@ -31,14 +30,20 @@ public class AddActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
-        CongratulationDataBase db = CongratulationDataBase.getDbInstance(this.getApplicationContext());
+        init();
 
+        loadMenu();
+
+    }
+
+    private void init(){
+
+        CongratulationDataBase db = CongratulationDataBase.getDbInstance(this.getApplicationContext());
         calendarSpinner = findViewById(R.id.calendar_spinner);
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
         congName = findViewById(R.id.congratulation_name);
         congDescription = findViewById(R.id.congratulation_description);
-
-        addButton = findViewById(R.id.result_counter);
+        Button addButton = findViewById(R.id.result_counter);
 
         addButton.setOnClickListener(v -> {
 
@@ -68,29 +73,21 @@ public class AddActivity extends AppCompatActivity {
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-
-
         calendarSpinner.setOnClickListener(v -> {
             DatePickerDialog datePickerDialog = new DatePickerDialog(
                     AddActivity.this , R.style.DialogTheme, (view, year1, month1, dayOfMonth) -> {
-                        month1 = month1 +1;
-                        String date = dayOfMonth + "." + month1 + "." + year1;
-                        calendarSpinner.setText(date);
-                    },year,month,day);
+                month1 = month1 +1;
+                String date = dayOfMonth + "." + month1 + "." + year1;
+                calendarSpinner.setText(date);
+            },year,month,day);
 
             datePickerDialog.show();
 
         });
 
-
-
-        loadMenu();
-
     }
 
-
-
-    void loadMenu(){
+    private void loadMenu(){
 
 
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {

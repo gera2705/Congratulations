@@ -13,19 +13,22 @@ import com.kolosov.samsung.school.congratulations.R;
 public class AddResultActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
-    private Button toHomeButton;
-    private Button addStillButton;
-    private ImageButton stylusButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_result);
 
+        init();
+
+        loadMenu();
+    }
+
+    private void init(){
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
-        toHomeButton = findViewById(R.id.favorite_found_button);
-        addStillButton = findViewById(R.id.result_counter);
-        stylusButton = findViewById(R.id.stylus_button);
+        Button toHomeButton = findViewById(R.id.favorite_found_button);
+        Button addStillButton = findViewById(R.id.result_counter);
+        ImageButton stylusButton = findViewById(R.id.stylus_button);
 
         toHomeButton.setOnClickListener(v -> {
             Intent intent = new Intent(AddResultActivity.this , HomeActivity.class);
@@ -35,14 +38,9 @@ public class AddResultActivity extends AppCompatActivity {
         addStillButton.setOnClickListener(v -> finish());
 
         stylusButton.setOnClickListener(v -> finish());
-
-
-
-        loadMenu();
     }
 
-    void loadMenu(){
-
+    private void loadMenu(){
 
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){

@@ -1,6 +1,5 @@
 package com.kolosov.samsung.school.congratulations.Activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ClipData;
@@ -12,7 +11,6 @@ import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -48,6 +46,7 @@ public class SearchResultActivity extends AppCompatActivity {
     }
 
     private void init(){
+
         //initialization
         congratulation = findViewById(R.id.congratulation_text);
         TextView smallCounterTextView = findViewById(R.id.small_count_text_view);
@@ -94,11 +93,12 @@ public class SearchResultActivity extends AppCompatActivity {
 
             String[] strings = receivedCongratulation.congratulationText.split("\\|");
 
-            smallCounterTextView.setText("Найдено: " + strings.length);
+            smallCounterTextView.setText(getString(R.string.small_counter_text, strings.length));
 
-            congratulation.setText(humanName + "!\n" + strings[currentCongratulationNumber-1]);
+            congratulation.setText(getString(R.string.congratulation_text, humanName , strings[currentCongratulationNumber-1]));
 
-            countTextView.setText( currentCongratulationNumber + "/" + strings.length);
+            countTextView.setText( getString(R.string.counter_text, currentCongratulationNumber, strings.length));
+
             congratulation.setMovementMethod(new ScrollingMovementMethod());
 
             forwardArrowImageButton.setOnClickListener(v -> {
@@ -106,9 +106,9 @@ public class SearchResultActivity extends AppCompatActivity {
                 if(currentCongratulationNumber != strings.length) {
                     currentCongratulationNumber++;
                 }
-                congratulation.setText(humanName + "!\n" + strings[currentCongratulationNumber - 1]);
+                congratulation.setText(getString(R.string.congratulation_text, humanName , strings[currentCongratulationNumber-1]));
 
-                countTextView.setText( currentCongratulationNumber + "/" + strings.length);
+                countTextView.setText( getString(R.string.counter_text, currentCongratulationNumber, strings.length));
             });
 
             backArrowImageButton.setOnClickListener(v -> {
@@ -117,9 +117,9 @@ public class SearchResultActivity extends AppCompatActivity {
                     currentCongratulationNumber--;
                 }
 
-                congratulation.setText(humanName + "!\n" + strings[currentCongratulationNumber - 1]);
+                congratulation.setText(getString(R.string.congratulation_text, humanName , strings[currentCongratulationNumber-1]));
 
-                countTextView.setText( currentCongratulationNumber + "/" + strings.length);
+                countTextView.setText( getString(R.string.counter_text, currentCongratulationNumber, strings.length));
 
             });
 
@@ -142,7 +142,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
         }else if(flag == 2){
             String text = arguments.get("text").toString();
-            countTextView.setText( 1 + "/" + 1);
+            countTextView.setText( getString(R.string.counter_text, 1, 1 ));
             favoriteButton.setEnabled(false);
             congratulation.setText(text);
         }
@@ -166,6 +166,7 @@ public class SearchResultActivity extends AppCompatActivity {
         menuItem.setChecked(true);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+
             switch (item.getItemId()){
 
                 case R.id.home:

@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.kolosov.samsung.school.congratulations.R;
+import com.kolosov.samsung.school.congratulations.Utils.RecyclerViewAdapter;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -31,11 +31,6 @@ public class FavoriteActivity extends AppCompatActivity {
     private TextView favoriteDescriptionTextView;
     private Button favoriteFoundButton;
     private Button favoriteToMainButton;
-
-
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
 
     public static void setFavorites(ArrayList<String> favorites) {
         FavoriteActivity.favorites = favorites;
@@ -52,11 +47,15 @@ public class FavoriteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite);
 
+        loadDate();
 
+        init();
 
+        loadMenu();
 
+    }
 
-
+    private void init(){
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
 
         stylusButton = findViewById(R.id.stylus_button);
@@ -64,15 +63,7 @@ public class FavoriteActivity extends AppCompatActivity {
         favoriteToMainButton = findViewById(R.id.result_counter);
         favoriteFoundButton = findViewById(R.id.favorite_found_button);
 
-        loadDate();
-
-        Log.d("LISTTAG" , favorites.toString());
-
-
-
-
-
-       favoriteToMainButton.setOnClickListener(v -> {
+        favoriteToMainButton.setOnClickListener(v -> {
             Intent intent2 = new Intent(FavoriteActivity.this , HomeActivity.class);
             startActivity(intent2);
 
@@ -82,7 +73,9 @@ public class FavoriteActivity extends AppCompatActivity {
             Intent intent = new Intent(FavoriteActivity.this , SearchActivity.class);
             startActivity(intent);
         });
+    }
 
+    private void loadMenu(){
         Menu menu = bottomNavigationView.getMenu();
         MenuItem menuItem = menu.getItem(3);
         menuItem.setChecked(true);
@@ -90,12 +83,10 @@ public class FavoriteActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){
 
-
                 case R.id.search:
                     Intent intent = new Intent(FavoriteActivity.this , SearchActivity.class);
                     startActivity(intent);
                     break;
-
 
                 case R.id.calendar:
                     Intent intent1 = new Intent(FavoriteActivity.this , CalendarActivity.class);
@@ -128,10 +119,10 @@ public class FavoriteActivity extends AppCompatActivity {
             favoriteFoundButton.setVisibility(View.VISIBLE);
 
         }else {
-            recyclerView = findViewById(R.id.recycle_view);
+            RecyclerView recyclerView = findViewById(R.id.recycle_view);
             recyclerView.setHasFixedSize(true);
-            layoutManager = new LinearLayoutManager(this);
-            adapter = new RecyclerViewAdapter( favorites , FavoriteActivity.this);
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+            RecyclerView.Adapter adapter = new RecyclerViewAdapter(favorites, FavoriteActivity.this);
 
             recyclerView.setLayoutManager(layoutManager);
             recyclerView.setAdapter(adapter);

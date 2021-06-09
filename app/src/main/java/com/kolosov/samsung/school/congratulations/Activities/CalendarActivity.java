@@ -47,6 +47,12 @@ public class CalendarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
+        init();
+        loadMenu();
+    }
+
+    private void init(){
+
         //initialization
         countDescriptionTextView = findViewById(R.id.result_counter);
         backImageButton = findViewById(R.id.back_description_arrow_image_button);
@@ -59,25 +65,18 @@ public class CalendarActivity extends AppCompatActivity {
         String firstDate = getCurrentDate();
         //initialization
 
-
-
-        loadMenu();
-
         db = CongratulationDataBase.getDbInstance(this.getApplicationContext());
-
         List<Congratulation> congratulationsOnDate = db.congratulationDao().getAllCongratulationByDate(firstDate);
-
         List<String> description = new ArrayList<>();
 
         for (Congratulation congratulation : congratulationsOnDate) {
             description.add(congratulation.description);
-
         }
 
-        countDescriptionTextView.setText(currentDatesNumber + "/" + description.size());
+        //countDescriptionTextView.setText(currentDatesNumber + "/" + description.size());
+        countDescriptionTextView.setText(getString(R.string.counter_text, currentDatesNumber , description.size()));
 
         setResultText(congratulationsOnDate , description);
-
 
         searchButton.setOnClickListener(v -> {
             Intent intent = new Intent(CalendarActivity.this, SearchActivity.class);
@@ -90,11 +89,8 @@ public class CalendarActivity extends AppCompatActivity {
             if (currentDatesNumber != description.size()) {
                 currentDatesNumber++;
             }
-
             setResultText(congratulationsOnDate , description);
-
-            countDescriptionTextView.setText(currentDatesNumber + "/" + description.size());
-
+            countDescriptionTextView.setText(getString(R.string.counter_text, currentDatesNumber , description.size()));
 
         });
 
@@ -105,35 +101,23 @@ public class CalendarActivity extends AppCompatActivity {
             }
 
             setResultText(congratulationsOnDate , description);
-
-            countDescriptionTextView.setText(currentDatesNumber + "/" + description.size());
+            countDescriptionTextView.setText(getString(R.string.counter_text, currentDatesNumber , description.size()));
         });
-
-
 
         calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
 
             try {
-
                 date = (month + 1) + "/" + dayOfMonth + "/" + String.valueOf(year).substring(2);
-
-
                 currentDatesNumber = 1;
-
-
                 List<Congratulation> congratulationsOnDate1 = db.congratulationDao().getAllCongratulationByDate(date);
-
-
                 List<String> description1 = new ArrayList<>();
 
                 for (Congratulation congratulation : congratulationsOnDate1) {
                     description1.add(congratulation.description);
                 }
 
-                countDescriptionTextView.setText(currentDatesNumber + "/" + description1.size());
-
+                countDescriptionTextView.setText(getString(R.string.counter_text, currentDatesNumber , description1.size()));
                 setResultText(congratulationsOnDate1 , description1);
-
 
                 forwardImageButton.setOnClickListener(v -> {
 
@@ -141,10 +125,7 @@ public class CalendarActivity extends AppCompatActivity {
                         currentDatesNumber++;
                     }
                     setResultText(congratulationsOnDate1 , description1);
-
-                    countDescriptionTextView.setText(currentDatesNumber + "/" + description1.size());
-
-
+                    countDescriptionTextView.setText(getString(R.string.counter_text, currentDatesNumber , description1.size()));
                 });
 
                 backImageButton.setOnClickListener(v -> {
@@ -154,27 +135,24 @@ public class CalendarActivity extends AppCompatActivity {
                     }
 
                     setResultText(congratulationsOnDate1 , description1);
-
-                    countDescriptionTextView.setText(currentDatesNumber + "/" + description1.size());
+                    countDescriptionTextView.setText(getString(R.string.counter_text, currentDatesNumber , description1.size()));
                 });
 
                 searchButton.setOnClickListener(v -> {
                     Intent intent = new Intent(CalendarActivity.this, SearchActivity.class);
                     intent.putExtra("holidayName", congratulationsOnDate1.get(currentDatesNumber-1).name);
-                     startActivity(intent);
+                    startActivity(intent);
                 });
-
 
             } catch (Exception e) {
                 resultText.setText("Праздник не найден");
             }
 
-
         });
 
     }
 
-    void setResultText(List<Congratulation> congratulationsOnDate , List<String> description){
+    private void setResultText(List<Congratulation> congratulationsOnDate , List<String> description){
 
         String[] dates = congratulationsOnDate.get(currentDatesNumber - 1).date.split("/");
         String date = dates[1] + "." + dates[0] + "." + dates[2];
@@ -184,11 +162,10 @@ public class CalendarActivity extends AppCompatActivity {
         SpannableString ss =  new SpannableString(date + "\n"+ congratulationsOnDate.get(currentDatesNumber - 1).name + "\n" + description.get(currentDatesNumber - 1));
         ss.setSpan(new RelativeSizeSpan(1.5f), sizeStartIndex , sizeEndIndex , Spanned.SPAN_EXCLUSIVE_INCLUSIVE); // устанавливаем размер
         ss.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.primary_2)), 0, colorEndIndex, Spanned.SPAN_EXCLUSIVE_INCLUSIVE); // устанавливаем цвет
-
         resultText.setText(ss);
     }
 
-    void loadMenu() {
+    private void loadMenu() {
         Menu menu = bottomNavigationView.getMenu();
         MenuItem menuItem = menu.getItem(2);
         menuItem.setChecked(true);
@@ -218,7 +195,7 @@ public class CalendarActivity extends AppCompatActivity {
     }
 
 
-    public String getCurrentDate (){
+    private String getCurrentDate (){
         // Текущее время
         Date currentDate = new Date();
         DateFormat dateFormat = new SimpleDateFormat("M/d/yy", Locale.getDefault());
