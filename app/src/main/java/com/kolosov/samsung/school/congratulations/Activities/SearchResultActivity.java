@@ -151,7 +151,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
     private void save() {
 
-        SharedPreferences sharedPreferences = getSharedPreferences("pr" , MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("favorites" , MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
         String json = gson.toJson(FavoriteActivity.getFavorites());
@@ -160,7 +160,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
     }
 
-    void loadMenu(){
+    private void loadMenu(){
         Menu menu = bottomNavigationView.getMenu();
         MenuItem menuItem = menu.getItem(1);
         menuItem.setChecked(true);
@@ -172,21 +172,25 @@ public class SearchResultActivity extends AppCompatActivity {
                 case R.id.home:
                     Intent intent = new Intent(SearchResultActivity.this , HomeActivity.class);
                     startActivity(intent);
+                    overridePendingTransition(0, 0);
                     break;
 
 
                 case R.id.calendar:
                     Intent intent1 = new Intent(SearchResultActivity.this , CalendarActivity.class);
                     startActivity(intent1);
+                    overridePendingTransition(0, 0);
                     break;
                 case R.id.favorite:
                     Intent intent2 = new Intent(SearchResultActivity.this , FavoriteActivity.class);
                     startActivity(intent2);
+                    overridePendingTransition(0, 0);
                     break;
 
                 case R.id.search:
                     Intent intent4 = new Intent(SearchResultActivity.this , SearchActivity.class);
                     startActivity(intent4);
+                    overridePendingTransition(0, 0);
                     break;
 
             }

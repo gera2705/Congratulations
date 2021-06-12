@@ -161,15 +161,18 @@ public class HomeActivity extends AppCompatActivity {
                 case R.id.search:
                     Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
                     startActivity(intent);
+                    overridePendingTransition(0, 0);
                     break;
 
                 case R.id.calendar:
                     Intent intent1 = new Intent(HomeActivity.this , CalendarActivity.class);
                     startActivity(intent1);
+                    overridePendingTransition(0, 0);
                     break;
                 case R.id.favorite:
                     Intent intent2 = new Intent(HomeActivity.this , FavoriteActivity.class);
                     startActivity(intent2);
+                    overridePendingTransition(0, 0);
                     break;
             }
 

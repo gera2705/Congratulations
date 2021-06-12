@@ -49,21 +49,25 @@ public class AddResultActivity extends AppCompatActivity {
                 case R.id.home:
                     Intent intent = new Intent(AddResultActivity.this , HomeActivity.class);
                     startActivity(intent);
+                    overridePendingTransition(0, 0);
                     break;
 
 
                 case R.id.calendar:
                     Intent intent1 = new Intent(AddResultActivity.this , CalendarActivity.class);
                     startActivity(intent1);
+                    overridePendingTransition(0, 0);
                     break;
                 case R.id.favorite:
                     Intent intent2 = new Intent(AddResultActivity.this , FavoriteActivity.class);
                     startActivity(intent2);
+                    overridePendingTransition(0, 0);
                     break;
 
                 case R.id.search:
                     Intent intent3 = new Intent(AddResultActivity.this , SearchActivity.class);
                     startActivity(intent3);
+                    overridePendingTransition(0, 0);
                     break;
 
             }

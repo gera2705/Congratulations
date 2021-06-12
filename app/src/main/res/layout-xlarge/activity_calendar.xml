@@ -64,8 +64,11 @@
             <CalendarView
                 android:id="@+id/calendar"
 
-                android:layout_width="512dp"
-                android:layout_height="512dp"
+                android:paddingTop="25dp"
+                android:weekDayTextAppearance="@android:style/TextAppearance.Large"
+                android:dateTextAppearance="@android:style/TextAppearance.Large"
+                android:layout_width="400dp"
+                android:layout_height="400dp"
                 android:theme="@style/DialogTheme"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/custom_button"

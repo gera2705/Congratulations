@@ -104,6 +104,8 @@ public class CalendarActivity extends AppCompatActivity {
             countDescriptionTextView.setText(getString(R.string.counter_text, currentDatesNumber , description.size()));
         });
 
+
+
         calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
 
             try {
@@ -177,16 +179,19 @@ public class CalendarActivity extends AppCompatActivity {
                 case R.id.search:
                     Intent intent = new Intent(CalendarActivity.this, SearchActivity.class);
                     startActivity(intent);
+                    overridePendingTransition(0, 0);
                     break;
 
 
                 case R.id.home:
                     Intent intent1 = new Intent(CalendarActivity.this, HomeActivity.class);
                     startActivity(intent1);
+                    overridePendingTransition(0, 0);
                     break;
                 case R.id.favorite:
                     Intent intent2 = new Intent(CalendarActivity.this, FavoriteActivity.class);
                     startActivity(intent2);
+                    overridePendingTransition(0, 0);
                     break;
             }
 

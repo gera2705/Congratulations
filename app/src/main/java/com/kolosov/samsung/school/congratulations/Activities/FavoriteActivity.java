@@ -47,9 +47,9 @@ public class FavoriteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite);
 
-        loadDate();
-
         init();
+
+        loadDate();
 
         loadMenu();
 
@@ -86,15 +86,18 @@ public class FavoriteActivity extends AppCompatActivity {
                 case R.id.search:
                     Intent intent = new Intent(FavoriteActivity.this , SearchActivity.class);
                     startActivity(intent);
+                    overridePendingTransition(0, 0);
                     break;
 
                 case R.id.calendar:
                     Intent intent1 = new Intent(FavoriteActivity.this , CalendarActivity.class);
                     startActivity(intent1);
+                    overridePendingTransition(0, 0);
                     break;
                 case R.id.home:
                     Intent intent2 = new Intent(FavoriteActivity.this , HomeActivity.class);
                     startActivity(intent2);
+                    overridePendingTransition(0, 0);
                     break;
             }
 
@@ -104,7 +107,7 @@ public class FavoriteActivity extends AppCompatActivity {
 
     private void loadDate() {
 
-        SharedPreferences sharedPreferences = getSharedPreferences("pr" , MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("favorites" , MODE_PRIVATE);
 
         Gson gson = new Gson();
         String json = sharedPreferences.getString("list" , null);
@@ -114,7 +117,6 @@ public class FavoriteActivity extends AppCompatActivity {
 
         if(favorites == null){
             stylusButton.setVisibility(View.VISIBLE);
-            favoriteDescriptionTextView.setVisibility(View.VISIBLE);
             favoriteToMainButton.setVisibility(View.VISIBLE);
             favoriteFoundButton.setVisibility(View.VISIBLE);
 

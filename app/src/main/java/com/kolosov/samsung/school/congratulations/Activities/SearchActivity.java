@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.kolosov.samsung.school.congratulations.DataBase.CongratulationDataBase;
 import com.kolosov.samsung.school.congratulations.Utils.MyAsyncTask;
 import com.kolosov.samsung.school.congratulations.R;
 
@@ -65,7 +66,7 @@ public class SearchActivity extends AppCompatActivity {
             holidayNameTextView.setText(name);
         }
 
-        //CongratulationDataBase db = CongratulationDataBase.getDbInstance(this.getApplicationContext());
+        CongratulationDataBase db = CongratulationDataBase.getDbInstance(this.getApplicationContext());
 
         holidaysNames = new ArrayList<>();
 
@@ -108,15 +109,18 @@ public class SearchActivity extends AppCompatActivity {
                 case R.id.home:
                     Intent intent = new Intent(SearchActivity.this , HomeActivity.class);
                     startActivity(intent);
+                    overridePendingTransition(0, 0);
                     break;
 
                 case R.id.calendar:
                     Intent intent1 = new Intent(SearchActivity.this , CalendarActivity.class);
                     startActivity(intent1);
+                    overridePendingTransition(0, 0);
                     break;
                 case R.id.favorite:
                     Intent intent2 = new Intent(SearchActivity.this , FavoriteActivity.class);
                     startActivity(intent2);
+                    overridePendingTransition(0, 0);
                     break;
             }
 
