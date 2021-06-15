@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -77,6 +79,12 @@ public class HomeActivity extends AppCompatActivity {
         }catch (NullPointerException e){
             name.setText("Сегодня нет никакого праздника!\nДобавьте свой!");
         }
+
+        ImageButton questionButton = findViewById(R.id.question);
+
+        questionButton.setOnClickListener(v -> {
+            Toast.makeText(this, "Раздел находится в разработке.", Toast.LENGTH_SHORT).show();
+        });
 
         smallButton1.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this , SearchActivity.class);

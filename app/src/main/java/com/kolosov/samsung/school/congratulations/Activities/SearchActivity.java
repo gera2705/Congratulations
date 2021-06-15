@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -66,14 +67,17 @@ public class SearchActivity extends AppCompatActivity {
             holidayNameTextView.setText(name);
         }
 
+        ImageButton questionButton = findViewById(R.id.question);
+
+        questionButton.setOnClickListener(v -> {
+            Toast.makeText(this, "Раздел находится в разработке.", Toast.LENGTH_SHORT).show();
+        });
+
         CongratulationDataBase db = CongratulationDataBase.getDbInstance(this.getApplicationContext());
 
         holidaysNames = new ArrayList<>();
 
         holidaysNames = new MyAsyncTask().doInBackground(this.getApplicationContext());
-
-
-        Log.d("NamesSize" , String.valueOf(holidaysNames.size()));
 
         genderName = new ArrayList<>();
 

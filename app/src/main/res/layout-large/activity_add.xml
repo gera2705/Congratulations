@@ -32,8 +32,8 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="64dp"
+        android:layout_height="72dp"
         android:background="@drawable/ic_logo"
         android:contentDescription="@string/logo_image_description"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
@@ -42,8 +42,9 @@
 
     <ImageButton
         android:id="@+id/question"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/ic_question"
         android:contentDescription="@string/help_button_description"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
@@ -75,7 +76,7 @@
         android:lineSpacingMultiplier="1.2"
         android:text="@string/add_description"
         android:textColor="@color/white"
-        android:textSize="21sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
         app:layout_constraintTop_toBottomOf="@+id/found_text" />
@@ -90,7 +91,7 @@
         android:paddingEnd="15dp"
         android:text="@string/add_label_1"
         android:textColor="@color/primary_1"
-        android:textSize="18sp"
+        android:textSize="21sp"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
         app:layout_constraintTop_toBottomOf="@+id/add_main_text"
 
@@ -104,9 +105,9 @@
         android:background="@drawable/custom_text_view"
         android:hint="@string/add_text_view_hint_1"
         android:paddingStart="15dp"
-        android:paddingTop="14dp"
+        android:paddingTop="16dp"
         android:paddingEnd="15dp"
-        android:paddingBottom="14dp"
+        android:paddingBottom="16dp"
         android:textColorHint="@color/primary_1"
         android:textSize="21sp"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
@@ -125,7 +126,7 @@
         android:paddingEnd="15dp"
         android:text="@string/add_label_2"
         android:textColor="@color/primary_1"
-        android:textSize="18sp"
+        android:textSize="21sp"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
         app:layout_constraintTop_toBottomOf="@+id/congratulation_name" />
 
@@ -137,9 +138,9 @@
         android:background="@drawable/custom_text_view"
         android:hint="@string/add_text_view_hint_2"
         android:paddingStart="15dp"
-        android:paddingTop="14dp"
+        android:paddingTop="16dp"
         android:paddingEnd="15dp"
-        android:paddingBottom="12dp"
+        android:paddingBottom="14dp"
         android:textColorHint="@color/primary_1"
         android:textSize="21sp"
         app:drawableEndCompat="@drawable/ic_calendar"
@@ -156,7 +157,7 @@
         android:paddingEnd="15dp"
         android:text="@string/add_label_3"
         android:textColor="@color/primary_1"
-        android:textSize="18sp"
+        android:textSize="21sp"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
         app:layout_constraintTop_toBottomOf="@+id/calendar_spinner" />
 
@@ -168,9 +169,9 @@
         android:background="@drawable/custom_text_view"
         android:hint="@string/add_text_view_hint_3"
         android:paddingStart="15dp"
-        android:paddingTop="14dp"
+        android:paddingTop="16dp"
         android:paddingEnd="15dp"
-        android:paddingBottom="14dp"
+        android:paddingBottom="16dp"
         android:textColorHint="@color/primary_1"
         android:textSize="21sp"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
@@ -189,15 +190,15 @@
         android:paddingEnd="15dp"
         android:text="@string/add_text_view_hint_4"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="21sp"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
         app:layout_constraintTop_toBottomOf="@+id/congratulation_description" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/switch1"
+        android:id="@+id/switch_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
         app:layout_constraintTop_toBottomOf="@+id/congratulation_description" />
@@ -211,6 +212,7 @@
         android:background="@drawable/custom_orange_button_found"
         android:text="@string/add_button_text"
         android:textAllCaps="false"
+        android:textSize="21sp"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical" />

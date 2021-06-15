@@ -12,14 +12,14 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="24dp"/>
+        app:layout_constraintGuide_begin="24dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vertical_end"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="24dp"/>
+        app:layout_constraintGuide_end="24dp" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -27,31 +27,29 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="32dp"/>
+        app:layout_constraintGuide_begin="32dp" />
 
     <TextView
-        android:fontFamily="@font/georgia_bold"
         android:id="@+id/results_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/georgia_bold"
         android:text="Результаты"
-        android:textSize="50sp"
         android:textColor="@color/white"
-        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal"
+        android:textSize="50sp"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
-        />
+        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal" />
 
     <TextView
-        android:fontFamily="@font/mont_regular"
         android:id="@+id/small_count_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/mont_regular"
         android:text="Найдено: "
-        android:textSize="21sp"
         android:textColor="@color/primary_1"
-        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
+        android:textSize="21sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/results_text_view"
-
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         />
 
     <ImageButton
@@ -68,40 +66,30 @@
         android:id="@+id/back_to_filter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:fontFamily="@font/mont_regular"
         android:layout_marginStart="16dp"
         android:layout_marginTop="19dp"
-
+        android:fontFamily="@font/mont_regular"
         android:text="Назад к фильтру"
-
         android:textSize="21sp"
-
         app:layout_constraintStart_toEndOf="@+id/back_button"
         app:layout_constraintTop_toBottomOf="@+id/results_text_view" />
 
-
     <TextView
-
         android:id="@+id/congratulation_text"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:paddingTop="16dp"
-        android:textSize="28sp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
         android:background="@color/white"
         android:paddingStart="10dp"
+        android:paddingTop="16dp"
         android:paddingEnd="10dp"
         android:paddingBottom="10dp"
+        android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@+id/button_copy"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
         app:layout_constraintTop_toBottomOf="@id/back_button" />
-
-
-
-
 
     <TextView
         android:id="@+id/result_counter"
@@ -109,31 +97,26 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:background="#FFC47D"
-        android:text="1/25"
-        android:textSize="50sp"
         android:fontFamily="@font/mont_regular"
-        android:paddingTop="10dp"
-        android:paddingBottom="8dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-
-        android:textColor="@color/white"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toTopOf="@+id/navigation"
         android:gravity="center"
-
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="8dp"
+        android:text="1/25"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical" />
-
 
     <Button
         android:id="@+id/forward_arrow_image_button"
         android:layout_width="64dp"
-
         android:layout_height="64dp"
         android:layout_marginStart="24dp"
         android:background="@drawable/ic_right_arrow"
-
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
         app:layout_constraintStart_toEndOf="@+id/result_counter"
@@ -144,7 +127,6 @@
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginEnd="24dp"
-
         android:background="@drawable/ic_left_arrow"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toStartOf="@+id/result_counter"
@@ -152,29 +134,25 @@
         app:layout_constraintTop_toBottomOf="@+id/button_share" />
 
     <Button
-        android:background="@drawable/ic_share"
         android:id="@+id/button_share"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginStart="32dp"
         android:layout_marginBottom="16dp"
-
+        android:background="@drawable/ic_share"
         app:layout_constraintBottom_toTopOf="@+id/result_counter"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical" />
 
     <Button
-        android:background="@drawable/ic_copy"
         android:id="@+id/button_copy"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginBottom="16dp"
-
+        android:background="@drawable/ic_copy"
         app:layout_constraintBottom_toTopOf="@+id/result_counter"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
-
         />
-
 
 
     <Button
@@ -188,14 +166,10 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end" />
 
 
-
-
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         app:itemBackground="@color/dark_blue"
         app:itemIconTint="@drawable/menu_selector"
         app:itemTextColor="@drawable/menu_selector"

@@ -43,26 +43,102 @@
         android:id="@+id/question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:background="@drawable/ic_question"
-        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal"
+        android:contentDescription="@string/help_button_description"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
-        android:contentDescription="@string/help_button_description" />
+        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal" />
 
 
     <TextView
+
         android:id="@+id/found_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:fontFamily="@font/georgia_bold"
         android:text="Избранное"
         android:textColor="@color/white"
-        android:textSize="28sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
 
+    <TextView
+        android:id="@+id/favorite_description_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/mont_regular"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.2"
+        android:textSize="20sp"
+        android:text="Сохраненные Вами поздравления хранятся\nв этом разделе"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/found_text" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycle_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/result_counter"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/favorite_description_text_view">
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <ImageButton
+        android:id="@+id/stylus_button"
+        android:layout_width="235dp"
+        android:layout_height="300dp"
+        android:background="@drawable/ic_favorite_stilys"
+        android:contentDescription="TODO"
+
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/favorite_found_button"
+
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@id/favorite_description_text_view" />
+
+
+
+    <Button
+        android:visibility="invisible"
+        android:id="@+id/favorite_found_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/custom_orange_button_found"
+        android:text="Найти поздравление"
+        android:textSize="21sp"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toTopOf="@+id/result_counter"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical" />
+
+    <Button
+        android:id="@+id/result_counter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/custom_orange_button_found_2"
+        android:text="На главную"
+        android:textSize="21sp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
@@ -77,5 +153,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         />
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

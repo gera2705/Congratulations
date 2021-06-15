@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
@@ -62,6 +63,12 @@ public class FavoriteActivity extends AppCompatActivity {
         favoriteDescriptionTextView = findViewById(R.id.favorite_description_text_view_2);
         favoriteToMainButton = findViewById(R.id.result_counter);
         favoriteFoundButton = findViewById(R.id.favorite_found_button);
+
+        ImageButton questionButton = findViewById(R.id.question);
+
+        questionButton.setOnClickListener(v -> {
+            Toast.makeText(this, "Раздел находится в разработке.", Toast.LENGTH_SHORT).show();
+        });
 
         favoriteToMainButton.setOnClickListener(v -> {
             Intent intent2 = new Intent(FavoriteActivity.this , HomeActivity.class);

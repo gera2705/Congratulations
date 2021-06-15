@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kolosov.samsung.school.congratulations.DataBase.Congratulation;
@@ -77,6 +78,12 @@ public class CalendarActivity extends AppCompatActivity {
         countDescriptionTextView.setText(getString(R.string.counter_text, currentDatesNumber , description.size()));
 
         setResultText(congratulationsOnDate , description);
+
+        ImageButton questionButton = findViewById(R.id.question);
+
+        questionButton.setOnClickListener(v -> {
+            Toast.makeText(this, "Раздел находится в разработке.", Toast.LENGTH_SHORT).show();
+        });
 
         searchButton.setOnClickListener(v -> {
             Intent intent = new Intent(CalendarActivity.this, SearchActivity.class);

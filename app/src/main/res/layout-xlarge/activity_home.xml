@@ -42,17 +42,18 @@
 
             <ImageView
                 android:id="@+id/logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="64dp"
+                android:layout_height="80dp"
                 android:background="@drawable/ic_logo"
+                android:contentDescription="@string/logo_image_description"
                 app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
-                app:layout_constraintTop_toTopOf="@+id/guideline_horizontal"
-                android:contentDescription="@string/logo_image_description" />
+                app:layout_constraintTop_toTopOf="@+id/guideline_horizontal" />
 
             <ImageButton
                 android:id="@+id/question"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/ic_question"
                 android:contentDescription="@string/help_button_description"
                 app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
@@ -148,7 +149,7 @@
 
             <ImageButton
                 android:id="@+id/left_button"
-                android:layout_width="256dp"
+                android:layout_width="250dp"
                 android:layout_height="250dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="8dp"
@@ -161,7 +162,7 @@
 
             <ImageButton
                 android:id="@+id/right_button"
-                android:layout_width="256dp"
+                android:layout_width="250dp"
                 android:layout_height="250dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="24dp"
@@ -191,7 +192,7 @@
                 android:layout_marginBottom="90dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" >
+                app:layout_constraintTop_toBottomOf="@+id/textView">
 
                 <HorizontalScrollView
                     android:layout_width="wrap_content"
@@ -199,7 +200,7 @@
                     android:scrollbarStyle="outsideInset"
 
                     android:scrollbarThumbHorizontal="@drawable/custom_scroll_bar_thumb"
-                    android:scrollbarTrackHorizontal="@drawable/custom_scroll_bar" >
+                    android:scrollbarTrackHorizontal="@drawable/custom_scroll_bar">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -209,81 +210,74 @@
                         <Button
 
                             android:id="@+id/small_button_1"
+                            android:layout_width="235dp"
+
+                            android:layout_height="245dp"
+                            android:layout_gravity="left"
+
+                            android:layout_marginStart="24dp"
+
+                            android:layout_marginEnd="10dp"
+                            android:background="@drawable/big_card_button_1"
                             android:fontFamily="@font/mont_semi_bold"
+                            android:gravity="left|top"
 
-                            android:textSize="24sp"
+
+                            android:padding="36dp"
                             android:text="День Рождения"
-
                             android:textAllCaps="false"
 
-                            android:layout_width="235dp"
-                            android:layout_height="245dp"
-                            android:layout_marginStart="24dp"
-                            android:layout_marginEnd="10dp"
-
-
-                            android:layout_gravity="left"
-                            android:gravity="left|top"
-                            android:padding="36dp"
-
-                            android:background="@drawable/big_card_button_1"
-                            />
+                            android:textSize="24sp" />
 
                         <Button
                             android:id="@+id/small_button_2"
-                            android:textAllCaps="false"
-
-                            android:fontFamily="@font/mont_semi_bold"
-
-                            android:textSize="24sp"
-                            android:text="Годовщина свадьбы"
                             style="?android:attr/borderlessButtonStyle"
+
                             android:layout_width="235dp"
+
                             android:layout_height="245dp"
-                            android:layout_marginEnd="10dp"
                             android:layout_gravity="left"
+                            android:layout_marginEnd="10dp"
+                            android:background="@drawable/big_card_button_2"
+                            android:fontFamily="@font/mont_semi_bold"
                             android:gravity="left|top"
                             android:padding="36dp"
-                            android:background="@drawable/big_card_button_2"
-                            />
+                            android:text="Годовщина свадьбы"
+                            android:textAllCaps="false"
+                            android:textSize="24sp" />
 
                         <Button
                             android:id="@+id/small_button_3"
                             style="?android:attr/borderlessButtonStyle"
-                            android:textAllCaps="false"
-
-                            android:fontFamily="@font/mont_semi_bold"
-
-                            android:textSize="24sp"
-                            android:text="Рождение ребенка"
                             android:layout_width="235dp"
+
                             android:layout_height="245dp"
-                            android:layout_marginEnd="10dp"
+
                             android:layout_gravity="left"
+                            android:layout_marginEnd="10dp"
+                            android:background="@drawable/big_card_button_3"
+                            android:fontFamily="@font/mont_semi_bold"
                             android:gravity="left|top"
                             android:padding="36dp"
-                            android:background="@drawable/big_card_button_3"
-
-
+                            android:text="Рождение ребенка"
+                            android:textAllCaps="false"
+                            android:textSize="24sp"
                             />
 
                         <Button
                             android:id="@+id/small_button_4"
-                            android:textAllCaps="false"
-
-                            android:fontFamily="@font/mont_semi_bold"
-
-                            android:textSize="24sp"
-                            android:text="День учителя"
                             style="?android:attr/borderlessButtonStyle"
                             android:layout_width="235dp"
                             android:layout_height="245dp"
-                            android:layout_marginEnd="24dp"
                             android:layout_gravity="left"
+                            android:layout_marginEnd="24dp"
+                            android:background="@drawable/big_card_button_4"
+                            android:fontFamily="@font/mont_semi_bold"
                             android:gravity="left|top"
                             android:padding="36dp"
-                            android:background="@drawable/small_card_button_4"
-                            />
+                            android:text="День учителя"
+                            android:textAllCaps="false"
+                            android:textSize="24sp" />
 
                     </LinearLayout>
                 </HorizontalScrollView>

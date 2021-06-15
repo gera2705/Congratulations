@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kolosov.samsung.school.congratulations.R;
@@ -33,6 +34,12 @@ public class AddResultActivity extends AppCompatActivity {
         toHomeButton.setOnClickListener(v -> {
             Intent intent = new Intent(AddResultActivity.this , HomeActivity.class);
             startActivity(intent);
+        });
+
+        ImageButton questionButton = findViewById(R.id.question);
+
+        questionButton.setOnClickListener(v -> {
+            Toast.makeText(this, "Раздел находится в разработке.", Toast.LENGTH_SHORT).show();
         });
 
         addStillButton.setOnClickListener(v -> finish());
