@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,9 +13,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.Array;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -74,8 +77,11 @@ public class HomeActivity extends AppCompatActivity {
 
         try {
 
-            Congratulation congratulation = db.congratulationDao().getCongratulationByDate(currentDate); //currentDate
-            name.setText(congratulation.name);
+//            Congratulation congratulation = db.congratulationDao().getCongratulationByDate(currentDate); //currentDate
+//            name.setText(congratulation.name);
+            List<Congratulation> congratulations = db.congratulationDao().getAllCongratulationByDate(currentDate);
+            name.setText(congratulations.get(0).name);
+            Log.d("LIST" , String.valueOf(congratulations));
         }catch (NullPointerException e){
             name.setText("Сегодня нет никакого праздника!\nДобавьте свой!");
         }
