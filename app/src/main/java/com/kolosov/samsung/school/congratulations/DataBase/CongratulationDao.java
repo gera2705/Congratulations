@@ -25,6 +25,9 @@ public interface CongratulationDao {
     @Query("SELECT * FROM congratulation WHERE date= :arg0")
     List<Congratulation> getAllCongratulationByDate(String arg0);
 
+    @Query("SELECT name FROM congratulation WHERE date= :arg0")
+    List<String> getAllCongratulationNameByDate(String arg0);
+
     @Insert
     void insertCongratulation(Congratulation... congratulations);
 

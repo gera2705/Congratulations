@@ -7,15 +7,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.sql.Array;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -24,14 +23,17 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kolosov.samsung.school.congratulations.DataBase.Congratulation;
 import com.kolosov.samsung.school.congratulations.DataBase.CongratulationDataBase;
 import com.kolosov.samsung.school.congratulations.R;
+import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
+import com.smarteist.autoimageslider.SliderAnimations;
+import com.smarteist.autoimageslider.SliderView;
 
 public class HomeActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
 
-    private TextView date;
-    private TextView name;
-    private TextView bigDateTextView;
+    private String date;
+//    private TextView name;
+    private String bigDate;
 
     private Button smallButton1;
     private Button smallButton2;
@@ -39,6 +41,9 @@ public class HomeActivity extends AppCompatActivity {
     private Button smallButton4;
 
     private String currentDate;
+    SliderView sliderView;
+    List<String> strings ;
+
 
     private static final String[] month = {"января" , "февраля" , "марта" , "апреля" , "мая"
             , "июня" , "июля" , "августа" , "сентября" , "октября" , "ноября" , "декабря" };
@@ -49,41 +54,66 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+
+
         init();
+
+        sliderView = findViewById(R.id.image_slider);
+
+
+//        strings.add("1");
+//        strings.add("2");
+//        strings.add("3");
+
+        SliderAdapter sliderAdapter = new SliderAdapter((ArrayList<String>) strings , date , bigDate);
+
+        sliderView.setSliderAdapter(sliderAdapter);
+        sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM);
+        sliderView.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
+        sliderView.startAutoCycle();
+
+
+
 
         loadMenu();
 
-        String[] dateArray = currentDate.split("/");
 
-        showDate(dateArray);
+
+
 
     }
 
     private void init(){
         CongratulationDataBase db = CongratulationDataBase.getDbInstance(this.getApplicationContext());
 
+
+
         smallButton1 = findViewById(R.id.small_button_1);
         smallButton2 = findViewById(R.id.small_button_2);
         smallButton3 = findViewById(R.id.small_button_3);
         smallButton4 = findViewById(R.id.small_button_4);
         currentDate = getCurrentDate();
-        date = findViewById(R.id.date);
-        name = findViewById(R.id.name);
-        bigDateTextView = findViewById(R.id.bigDateTextView);
+//        date = findViewById(R.id.date);
+//        name = findViewById(R.id.name);
+//        bigDateTextView = findViewById(R.id.bigDateTextView);
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
         Button foundBlackButton = findViewById(R.id.home_black_found_button);
         ImageButton addButton = findViewById(R.id.right_button);
         ImageButton foundButton = findViewById(R.id.left_button);
 
+        String[] dateArray = currentDate.split("/");
+
+        showDate(dateArray);
+
         try {
 
 //            Congratulation congratulation = db.congratulationDao().getCongratulationByDate(currentDate); //currentDate
 //            name.setText(congratulation.name);
-            List<Congratulation> congratulations = db.congratulationDao().getAllCongratulationByDate(currentDate);
-            name.setText(congratulations.get(0).name);
-            Log.d("LIST" , String.valueOf(congratulations));
+           strings = db.congratulationDao().getAllCongratulationNameByDate(currentDate);
+//            name.setText(congratulations.get(0).name);
+            //Log.d("LIST" , String.valueOf(congratulations));
         }catch (NullPointerException e){
-            name.setText("Сегодня нет никакого праздника!\nДобавьте свой!");
+//            name.setText("Сегодня нет никакого праздника!\nДобавьте свой!");
         }
 
         ImageButton questionButton = findViewById(R.id.question);
@@ -119,12 +149,12 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        foundBlackButton.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
-            intent.putExtra("holidayName", name.getText());
-            startActivity(intent);
-
-        });
+//        foundBlackButton.setOnClickListener(v -> {
+//            Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
+//            intent.putExtra("holidayName", name.getText());
+//            startActivity(intent);
+//
+//        });
 
         foundButton.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
@@ -155,11 +185,22 @@ public class HomeActivity extends AppCompatActivity {
             dateArray[0] = "0" + dateArray[0];
         }
 
+        date = getString(R.string.date, dateArray[1], getMonth(Integer.parseInt(dateArray[0])));
+         bigDate = getString(R.string.big_date, dateArray[1] , dateArray[0]);
+
+//        if (Integer.parseInt(dateArray[1]) < 10) {
+//            dateArray[1] = "0" + dateArray[1];
+//        }
+//
+//        if (Integer.parseInt(dateArray[0]) < 10) {
+//            dateArray[0] = "0" + dateArray[0];
+//        }
+
         //date.setText("Сегодня, " + dateArray[1] + " " + getMonth(Integer.parseInt(dateArray[0])));
-        date.setText(getString(R.string.date, dateArray[1], getMonth(Integer.parseInt(dateArray[0]))));
+//        date.setText(getString(R.string.date, dateArray[1], getMonth(Integer.parseInt(dateArray[0]))));
 
         //bigDateTextView.setText(dateArray[1] + "\n" + dateArray[0]);
-        bigDateTextView.setText(getString(R.string.big_date, dateArray[1] , dateArray[0]));
+       // bigDateTextView.setText(getString(R.string.big_date, dateArray[1] , dateArray[0]));
 
     }
 
