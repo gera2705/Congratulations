@@ -79,7 +79,7 @@
                 app:sliderIndicatorRadius="2dp"
                 app:sliderIndicatorSelectedColor="@color/primary_3"
                 app:sliderIndicatorUnselectedColor="@color/primary_1"
-                app:sliderScrollTimeInSec="5"
+                app:sliderScrollTimeInSec="3"
                 app:sliderStartAutoCycle="true" />
 
 

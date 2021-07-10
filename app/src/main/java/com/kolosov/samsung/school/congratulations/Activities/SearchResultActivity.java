@@ -9,8 +9,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -106,6 +108,7 @@ public class SearchResultActivity extends AppCompatActivity {
                 if(currentCongratulationNumber != strings.length) {
                     currentCongratulationNumber++;
                 }
+                favoriteButton.setBackgroundResource(R.drawable.ic_favorite);
                 congratulation.setText(getString(R.string.congratulation_text, humanName , strings[currentCongratulationNumber-1]));
 
                 countTextView.setText( getString(R.string.counter_text, currentCongratulationNumber, strings.length));
@@ -117,6 +120,7 @@ public class SearchResultActivity extends AppCompatActivity {
                     currentCongratulationNumber--;
                 }
 
+                favoriteButton.setBackgroundResource(R.drawable.ic_favorite);
                 congratulation.setText(getString(R.string.congratulation_text, humanName , strings[currentCongratulationNumber-1]));
 
                 countTextView.setText( getString(R.string.counter_text, currentCongratulationNumber, strings.length));
@@ -134,6 +138,7 @@ public class SearchResultActivity extends AppCompatActivity {
                     FavoriteActivity.getFavorites().add(strings[currentCongratulationNumber - 1]);
                     save();
 
+                    favoriteButton.setBackgroundResource(R.drawable.ic_favorite_pressed);
                     Toast.makeText(SearchResultActivity.this ,"Поздравление добавлено в избранное!",Toast.LENGTH_SHORT).show();
                 }
 
@@ -143,8 +148,27 @@ public class SearchResultActivity extends AppCompatActivity {
         }else if(flag == 2){
             String text = arguments.get("text").toString();
             countTextView.setText( getString(R.string.counter_text, 1, 1 ));
-            favoriteButton.setEnabled(false);
+            //favoriteButton.setEnabled(false);
             congratulation.setText(text);
+
+            int position = (Integer) arguments.get("position");
+            favoriteButton.setBackgroundResource(R.drawable.ic_favorite_pressed);
+
+
+
+            favoriteButton.setOnClickListener(v -> {
+                Toast.makeText(this, "Удалено из избранного!", Toast.LENGTH_SHORT).show();
+
+                FavoriteActivity.getFavorites().remove(position);
+
+                save();
+
+                this.finish();
+                Intent intent2 = new Intent(SearchResultActivity.this , FavoriteActivity.class);
+                startActivity(intent2);
+                overridePendingTransition(0, 0);
+
+            });
         }
         //click event
     }

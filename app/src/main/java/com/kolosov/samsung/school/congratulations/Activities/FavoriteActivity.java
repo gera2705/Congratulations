@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -54,6 +55,14 @@ public class FavoriteActivity extends AppCompatActivity {
 
         loadMenu();
 
+        Log.d("LIST" , favorites.toString());
+
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        recreate();
     }
 
     private void init(){
@@ -80,6 +89,8 @@ public class FavoriteActivity extends AppCompatActivity {
             Intent intent = new Intent(FavoriteActivity.this , SearchActivity.class);
             startActivity(intent);
         });
+
+
     }
 
     private void loadMenu(){
@@ -122,7 +133,7 @@ public class FavoriteActivity extends AppCompatActivity {
 
         favorites = gson.fromJson(json, type);
 
-        if(favorites == null){
+        if(favorites == null || favorites.size() == 0){
             stylusButton.setVisibility(View.VISIBLE);
             favoriteToMainButton.setVisibility(View.VISIBLE);
             favoriteFoundButton.setVisibility(View.VISIBLE);

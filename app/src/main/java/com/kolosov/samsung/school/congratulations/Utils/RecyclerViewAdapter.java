@@ -40,6 +40,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             Intent intent = new Intent(context, SearchResultActivity.class);
             intent.putExtra("flag" , "2");
             intent.putExtra("text", s);
+            intent.putExtra("position", position);
             context.startActivity(intent);
         });
     }

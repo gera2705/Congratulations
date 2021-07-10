@@ -65,7 +65,7 @@ public class HomeActivity extends AppCompatActivity {
 //        strings.add("2");
 //        strings.add("3");
 
-        SliderAdapter sliderAdapter = new SliderAdapter((ArrayList<String>) strings , date , bigDate);
+        SliderAdapter sliderAdapter = new SliderAdapter((ArrayList<String>) strings , date , bigDate, this);
 
         sliderView.setSliderAdapter(sliderAdapter);
         sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM);
@@ -73,6 +73,15 @@ public class HomeActivity extends AppCompatActivity {
         sliderView.startAutoCycle();
 
 
+//        Button foundBlackButton = findViewById(R.id.home_black_found_button);
+//
+//        foundBlackButton.setOnClickListener(v -> {
+//            Toast.makeText(this, "a", Toast.LENGTH_SHORT).show();
+////            Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
+////            intent.putExtra("holidayName", name.getText());
+////            startActivity(intent);
+//
+//        });
 
 
         loadMenu();
@@ -97,7 +106,7 @@ public class HomeActivity extends AppCompatActivity {
 //        name = findViewById(R.id.name);
 //        bigDateTextView = findViewById(R.id.bigDateTextView);
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
-        Button foundBlackButton = findViewById(R.id.home_black_found_button);
+//        Button foundBlackButton = findViewById(R.id.home_black_found_button);
         ImageButton addButton = findViewById(R.id.right_button);
         ImageButton foundButton = findViewById(R.id.left_button);
 
@@ -150,9 +159,10 @@ public class HomeActivity extends AppCompatActivity {
         });
 
 //        foundBlackButton.setOnClickListener(v -> {
-//            Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
-//            intent.putExtra("holidayName", name.getText());
-//            startActivity(intent);
+//            Toast.makeText(this, "a", Toast.LENGTH_SHORT).show();
+////            Intent intent = new Intent(HomeActivity.this , SearchActivity.class);
+////            intent.putExtra("holidayName", name.getText());
+////            startActivity(intent);
 //
 //        });
 
@@ -188,19 +198,7 @@ public class HomeActivity extends AppCompatActivity {
         date = getString(R.string.date, dateArray[1], getMonth(Integer.parseInt(dateArray[0])));
          bigDate = getString(R.string.big_date, dateArray[1] , dateArray[0]);
 
-//        if (Integer.parseInt(dateArray[1]) < 10) {
-//            dateArray[1] = "0" + dateArray[1];
-//        }
-//
-//        if (Integer.parseInt(dateArray[0]) < 10) {
-//            dateArray[0] = "0" + dateArray[0];
-//        }
 
-        //date.setText("Сегодня, " + dateArray[1] + " " + getMonth(Integer.parseInt(dateArray[0])));
-//        date.setText(getString(R.string.date, dateArray[1], getMonth(Integer.parseInt(dateArray[0]))));
-
-        //bigDateTextView.setText(dateArray[1] + "\n" + dateArray[0]);
-       // bigDateTextView.setText(getString(R.string.big_date, dateArray[1] , dateArray[0]));
 
     }
 
